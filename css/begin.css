@@ -60,10 +60,6 @@
   right: 2vw;
 }
 
-/* Video Feed Styling:
- * Include the !important keyword to override default styles applied by JS.
- * webgazer.js sets defaults for: display, position, top, left, width, height
- */
 #webgazerVideoContainer {
   display: block !important;
   position: fixed !important;
@@ -74,7 +70,6 @@
   z-index: 1;
 }
 
-/* Navbar styling */
 .navbar {
   position: fixed;
   width: 200px;
@@ -124,7 +119,6 @@ li {
   height: 100%;
 }
 
-/* Calibration button styling */
 .Calibration {
   width: 20px;
   height: 20px;
