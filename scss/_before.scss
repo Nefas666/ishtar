@@ -1,0 +1,61 @@
+@import 'colors';
+@import 'config';
+@import 'reset';
+//@import 'grids';
+@import 'breakpoints';
+@import 'mixins';
+@import 'typo';
+
+
+body{
+    //background-image:
+}
+#wrapper{
+
+    @include row();
+    justify-content: center;
+   
+
+    div.title{
+
+        align-content:center;
+        //background-color: chartreuse;
+
+        h1.before{
+            @include h1-title-before();
+            text-align: left;
+
+
+        }
+   .paragraph{
+            width:40%;
+            display: flex;
+            align-content:center;
+        }
+    }
+
+    #button{
+        
+        align-content:space-between;
+        justify-content: space-between;
+        width:95%;
+    }
+
+
+    
+} 
+
+a.switch {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: $primary-font;
+    color: $li-ish;
+    text-decoration: underline;
+    transition: all 0.3s;
+    padding:5%;
+    box-sizing: border-box;
+    &:hover {
+      color: $red-ish;
+    }
+}
+

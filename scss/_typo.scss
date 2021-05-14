@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap");
+
+$primary-font:"Poppins", 'Arial', Helvetica, Geneva, sans-serif;
+
+
+@mixin h1-title-home{
+    font-family: $primary-font;
+    //text-align:center;
+    font-size: 12.25em;
+    text-transform: uppercase;
+    color:$li-ish;
+    
+}
+
+@mixin h1-title-before{
+    font-family: $primary-font;
+    text-align:left;
+    font-size: 6.75em;
+    text-transform: uppercase;
+    color:$li-ish;
+    
+}
+@mixin h2-count{
+    font-family:$primary-font;
+    color:$li-ish;
+    font-size:50px;
+}

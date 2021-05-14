@@ -1,0 +1,40 @@
+$breakpoints : (
+    xxsm: 24rem, // ~384px
+    xsm: 30rem, // ~480px
+    sm: 48rem, // ~768px
+    md: 64rem, // ~1024px
+    lg: 75rem, // ~1200px
+    xl: 80rem, // ~1280px
+    xxl: 90rem // ~1440px
+);
+
+@mixin breakpoint($breakpoint, $dir : min) {
+    // la variabile min/max serve per gestire l'apertura del menu mobile
+    @if is-absolute-length($breakpoint) {
+        @media only screen and (#{$dir}-width: $breakpoint) {
+            @content;
+        }
+    }
+    @else {
+        @media only screen and (#{$dir}-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+            @content;
+        }
+    }
+}
+
+@each $breakpoint in $breakpoints {
+    $slug: nth($breakpoint, 1);
+    $break: nth($breakpoint, 2);
+
+    @include breakpoint($break) {
+        .hide-#{$slug} {
+            display: none;
+        }
+    }
+
+    @include breakpoint($break) {
+        .show-#{$slug} {
+            display: block;
+        }
+    }
+}
