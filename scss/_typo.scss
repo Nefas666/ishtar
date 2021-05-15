@@ -1,19 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap");
 
-$primary-font:"Poppins", 'Arial', Helvetica, Geneva, sans-serif;
+@import url("../Geomanist/Geomanist-Ultra-Webfont/specimen_files/specimen_stylesheet.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap');
 
+// @font-face {
+//     font-family:"Geomanist", sans-serif ;
+//     src: url(../Geomanist/Geomanist-Black-Italic-Webfont/geomanist-black-italic-webfont.woff2) format('woff2');
+//     src: url(../Geomanist/Geomanist-Black-Italic-Webfont/geomanist-black-italic-webfont.woff) format('woff');
+//     src: url(../Geomanist/Geomanist-Black-Italic-Webfont/geomanist-black-italic-webfont.eot) format('eot');
+
+// }
+
+$primary-font:"Poppins";
+$b-type:"Geomanist Ultra", 'Arial', Helvetica, Geneva, sans-serif;
+$light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
 
 @mixin h1-title-home{
-    font-family: $primary-font;
+    font-family: $b-type;
     //text-align:center;
     font-size: 12.25em;
     text-transform: uppercase;
     color:$li-ish;
-    
+    font-weight: 900;
 }
 
 @mixin h1-title-before{
-    font-family: $primary-font;
+    font-family: $b-type;
     text-align:left;
     font-size: 6.75em;
     text-transform: uppercase;
@@ -21,7 +33,45 @@ $primary-font:"Poppins", 'Arial', Helvetica, Geneva, sans-serif;
     
 }
 @mixin h2-count{
-    font-family:$primary-font;
+    font-family:$b-type;
     color:$li-ish;
     font-size:50px;
 }
+ @mixin links {
+    font-family:$b-type;
+    text-align:center;
+    text-transform: uppercase;
+    color:$li-ish;
+    text-decoration:none;
+    font-weight:400;
+    letter-spacing: 0.15em;
+
+    &:hover{
+        font-family:$b-type;
+        font-weight:400;
+        text-decoration:underline;
+        text-decoration-color:$gradient-temp1;
+       }
+ }
+
+ @mixin h4s{
+    font-family:$b-type;
+    text-align:center;
+    text-transform: uppercase;
+    color:$li-ish;
+    text-decoration:none;
+    font-weight:400;
+    font-size:1.75em;
+
+ }
+
+ @mixin body-copy{
+    font-family:$light-guy;
+    text-align:left;
+    color:$li-ish;
+    font-weight:300;
+    font-size:1.38em;
+    line-height: 1.85em;
+    letter-spacing: 0.15em;
+        
+ }

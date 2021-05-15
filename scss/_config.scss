@@ -1,3 +1,36 @@
+@mixin buttonish(){
+
+    margin-top: 1em;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: $home-bg-temp;
+    border: solid 1px $gradient-temp1;
+    backdrop-filter: blur(20px);
+    font-family: $b-type;
+    font-weight: 200;
+    font-size: 1rem;
+    color:$li-ish;
+    box-shadow: 0 0 0 1px rgba(216, 211, 211, 0.5);
+    transition: all 0.16s ease-in;
+    z-index:2;
+
+
+    &:hover {
+        background: none;
+        top: -0.5px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+    }
+    
+    &:active {
+        background: none;
+        top: -0.5px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+        border:none;
+      }
+}
+
+
+
 
 /* Calibration button styling */
 .Calibration{
@@ -117,18 +150,18 @@ li {
     height: 100%;
 }
 
-.Calibration{
-    width: 20px;
-    height: 20px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-    background-color: rgb(9, 255, 0);
-    opacity: 0.2;
-    border-color: black;
-    border-style: solid;
-    position:fixed;
-}
+// .Calibration{
+//     width: 20px;
+//     height: 20px;
+//     -webkit-border-radius: 25px;
+//     -moz-border-radius: 25px;
+//     border-radius: 25px;
+//     background-color: rgb(9, 255, 0);
+//     opacity: 0.2;
+//     border-color: black;
+//     border-style: solid;
+//     position:fixed;
+// }
 
 
 

@@ -14,6 +14,7 @@ body{
 
     @include row();
     justify-content: center;
+    padding:5%;
    
 
     div.title{
@@ -28,34 +29,30 @@ body{
 
         }
    .paragraph{
-            width:40%;
+            width:50%;
             display: flex;
-            align-content:center;
+            @include body-copy();
         }
     }
 
-    #button{
-        
+    .button{
+        display:flex;
         align-content:space-between;
-        justify-content: space-between;
-        width:95%;
+        justify-content: space-evenly;
+        width:55%;
+
+        button.open{
+
+            @include buttonish();
+        }
+
+        a {
+            @include links();
+            display: block;
+        }
+
     }
-
-
-    
 } 
 
-a.switch {
-    font-size: 13px;
-    font-weight: 400;
-    font-family: $primary-font;
-    color: $li-ish;
-    text-decoration: underline;
-    transition: all 0.3s;
-    padding:5%;
-    box-sizing: border-box;
-    &:hover {
-      color: $red-ish;
-    }
-}
+
 

@@ -18,16 +18,16 @@
         
     <div class="wrapper" id="wrapper">
         <div class="title">
-            <h1 class="before">Before Launching</h1>
-            <div>
-                <p class="paragraph">
-                    You are about to enjoy an experiment that  will ask you to access 
-                    the webcam and the processing of some of your personal  information will be needed to proceed. 
-                    Choose the option which is more comfortable for you.
-                </p>
+            <h1 class="before"><em>Before Launching</em></h1>
+                <div>
+                    <p class="paragraph">
+                        You are about to enjoy an experiment that  will ask you to access 
+                        the webcam and the processing of some of your personal  information will be needed to proceed. 
+                        Choose the option which is more comfortable for you.
+                    </p>
+                </div>
             </div>
-        </div>
-            <div id="button -list -display">
+            <div class="button">
                 <button class="open" id="open"><a href="learn-more.html">LEARN MORE ABOUT ISHTAR</a></button>
                     <button class="open" id="open"><a href="begin.html">FILL THE POLICY AND PROCEED </a></button>
             </div>
@@ -48,7 +48,11 @@
                 </div>
     </div>
     
+    <script src="js/cookie.js">
 
+        createCookie('ish','started', 1);
+     
+      </script>
     <script>
         function openModal(){
     const open = document.getElementById("card");

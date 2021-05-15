@@ -1,5 +1,7 @@
 /* Calibration button styling */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("../Geomanist/Geomanist-Ultra-Webfont/specimen_files/specimen_stylesheet.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap");
 .Calibration {
   width: 20px;
   height: 20px;
@@ -117,19 +119,6 @@ li {
   display: inline-block;
   vertical-align: middle;
   height: 100%;
-}
-
-.Calibration {
-  width: 20px;
-  height: 20px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  background-color: #09ff00;
-  opacity: 0.2;
-  border-color: black;
-  border-style: solid;
-  position: fixed;
 }
 
 .calibrationDiv {
@@ -283,10 +272,11 @@ body .wrapper {
   align-items: center;
 }
 body .wrapper h1.before {
-  font-family: "Poppins", "Arial", Helvetica, Geneva, sans-serif;
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   font-size: 12.25em;
   text-transform: uppercase;
   color: #FCFAFC;
+  font-weight: 900;
 }
 body .wrapper h1.before:hover {
   color: #E90003;
@@ -295,7 +285,7 @@ body .wrapper h1.before:hover {
 body a.switch {
   font-size: 13px;
   font-weight: 400;
-  font-family: "Poppins", "Arial", Helvetica, Geneva, sans-serif;
+  font-family: "Poppins";
   color: #FCFAFC;
   text-decoration: underline;
   transition: all 0.3s;
