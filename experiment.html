@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <link href="css/experiment.css" rel="stylesheet" type="text/css">
+    <link href="css/experiment.css.map" rel="stylesheet" type="text/css">
+    <script src="js/webgazer.js" type="text/javascript" ></script>
+    <script src="js/jquery.min.js" type="text/javascript" ></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/main.js" type="text/javascript" ></script>  
+    <script src="js/calibration.js"></script>
+    <script src="js/precision_calculation.js"></script>
+
+  
+
+</head>
+<body>
+    <div id="container-main">
+        <canvas id="plotting_canvas" width="" height="" style="cursor: pointer; position: fixed;"> </canvas>   
+           
+         
+<div id="helpModal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+
+             Modal content--
+            <div class="modal-content">
+            <div class="modal-body">
+                <!--<img src="media/calibration.png" width="100%" height="100%" alt="webgazer demo instructions">-->
+            </div>
+            <div class="modal-footer">
+                <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close &amp; load saved model </button>
+                <button type="button" id="start_calibration" class="btn btn-primary" data-dismiss="modal" onclick="Restart()">Calibrate</button>
+            </div>
+            </div>
+
+    </div>
+</div>
+            <!-- nav -->
+    <nav id="webgazerNavbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- The hamburger menu button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar">Menu</span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <!-- Accuracy -->
+              <li id="Accuracy"><a>Not yet Calibrated</a></li>
+              <li><a onclick="Restart()" href="#">Recalibrate</a></li>
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><button class="helpBtn" data-toggle="modal" data-target="#helpModal"><a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a></button></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+     <!-- Calibration points -->
+<div class="calibrationDiv">
+    <input type="button" class="Calibration" id="Pt1" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt2" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt3" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt4" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt5" style="background-color: red; opacity: 0.2; display: none;">
+    <input type="button" class="Calibration" id="Pt6" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt7" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt8" style="background-color: red; opacity: 0.2;">
+    <input type="button" class="Calibration" id="Pt9" style="background-color: red; opacity: 0.2;">
+</div>   
+
+<div id="webgazerVideoContainer" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;">
+        
+    <video playsinline="" id="webgazerVideoFeed" autoplay="" style="display: block; position: absolute; width: 320px; height: 240px; transform: scale(-1, 1);"></video>
+    <canvas id="webgazerVideoCanvas" width="640" height="480" style="display: none;"></canvas>
+    <canvas id="webgazerFaceOverlay" width="640" height="480" style="display: block; position: absolute; transform: scale(-1, 1); width: 320px; height: 240px;"></canvas>
+    <canvas id="webgazerFaceFeedbackBox" style="display: block; border: solid white; position: absolute; top: 40.8px; left: 80.8px; width: 158.4px; height: 158.4px;"></canvas>
+</div>
+      
+<section class="vidbox">
+  <video id="vid1" controls width="768">
+   <source src="violence.mp4" type="video/mp4">
+  </video>
+
+   <video id="vid2" controls width="768">
+    <source src="sex.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- Latest compiled JavaScript -->
+<script src="js/resize_canvas.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<div class="swal-overlay" tabindex="-1">
+    <div class="swal-modal" role="dialog" aria-modal="true">
+        <div class="swal-title" style="">Calibration</div>
+        <div class="swal-text" style="">Please click on each of the 9 points on the screen. You must click on each point 5 times till it goes yellow. This will calibrate your eye movements.</div><div class="swal-footer">
+            <div class="swal-button-container">
+  
+      <button class="swal-button swal-button--confirm">OK</button>
+  
+      <div class="swal-button__loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+  
+    </div></div></div></div>
+    <div id="webgazerGazeDot" style="display: none; position: fixed; z-index: 99999; left: -5px; top: -5px; background: red; border-radius: 100%; opacity: 0.7; width: 10px; height: 10px;"></div>
+    </div>
+</body>
+
+</html>
