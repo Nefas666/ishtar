@@ -5,6 +5,7 @@
 @import 'breakpoints';
 @import 'mixins';
 @import 'typo';
+@import 'master';
 
 
 
@@ -12,9 +13,8 @@ body {
 
     width:100%;
     height:100%;
-    background:$bg-ish;
     overflow:hidden;
-    background-repeat: no-repeat;
+    
 
 .container {
   
@@ -78,16 +78,16 @@ section#formHolder {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(50%, -20%);
+    transform: translate(30%, -20%);
     text-align: center;
-    transition: all 0.6s;
+    transition: all 0.8s;
     &.active {
       top: 100px;
       left: 100px;
       transform: translate(0);
     }
     h2 {
-      @include h1-title-before();
+      @include h1-title-bgin();
       color:$li-ish;
     }
     p {
@@ -99,28 +99,13 @@ section#formHolder {
       font-family: $primary-font;
     }
   }
-  .success-msg {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
 
     p {
-      font-size: 25px;
-      font-weight: 400;
-      font-family: $primary-font;
+      @include body-copy();
     }
     a {
-      font-size: 12px;
-      text-transform: uppercase;
-      padding: 8px 30px;
-      background: $bg-ish;
-      text-decoration: none;
-      color: #fff;
-      border-radius: 30px;
+      @include links();
     }
     p,
     a {
@@ -135,32 +120,26 @@ section#formHolder {
 
 // Form Area
     }
-  }
+  
 }
 .form {
   position: relative;
+  width:50%;
 
-  .form-peice {
-    background: $bg-ish;
+  form {
+    padding: 0 40px;
+    transition: all 1.12s cubic-bezier(1.000, -0.375, 0.285, 0.995);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    color: $li-ish;
-    //padding: 30px 0 60px;
-    transition: all 0.9s cubic-bezier(1.000, -0.375, 0.285, 0.995);
-    //position: absolute;
-   //overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-150%, -20%);
+
     &.switched {
       transform: translateX(-100%);
       width: 100%;
       left: 0;
     }
-  }
-  form {
-    padding: 0 40px;
-
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-160%, -20%);
 
 
     .form-group {
@@ -176,10 +155,9 @@ section#formHolder {
       }
     }
     label {
-      font-size: 12px;
-      font-weight: 400;
+      @include body-copy();
       text-transform: uppercase;
-      font-family: $primary-font;
+
       transform: translateY(40px);
       transition: all 0.4s;
       cursor: text;
@@ -206,7 +184,7 @@ section#formHolder {
       font-family: $primary-font;
       z-index: 1;
       &.hasError {
-        border-color: $bg-ish;
+        border-color: $red-ish;
       }
     }
     span.error {
@@ -224,41 +202,21 @@ section#formHolder {
     .CTA {
       margin-top: 30px;
       input {
-        margin-top: 1em;
-        padding: 1rem 2rem;
-        cursor: pointer;
-        border: none;
-        background: $home-bg-temp;
-        border: solid 1px $gradient-temp1;
-        backdrop-filter: blur(20px);
-        font-family: 'Poppins';
-        font-weight: 200;
-        font-size: 1rem;
-        color:$li-ish;
+        @include buttonish();
+        @include links();
       }
       a.switch {
-        font-size: 13px;
-        font-weight: 400;
-        font-family: $primary-font;
-        color: $li-ish;
-        text-decoration: underline;
-        transition: all 0.3s;
         padding:5%;
-        box-sizing: border-box;
-        &:hover {
-          color: $red-ish;
+        @include links();
+        &:hover{
+          color:$red-ish;
+          padding:5%;
         }
       }
     }
   }
 }
 
-.signup .form-peice{
-
-
-
-
-}
 
 @media (max-width: 768px) {
   .container {

@@ -87,3 +87,16 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     text-transform: uppercase;
         
  }
+
+ 
+ @mixin h1-title-bgin{
+    font-family:$b-type;
+    text-align:left;
+    color:$li-ish;
+    font-weight:900;
+    font-size:8.13em;
+    line-height: 0.85em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+        
+ }
