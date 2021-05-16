@@ -410,7 +410,7 @@ label, p {
   transition: width 1s, height 350ms;
 }
 .card div.heading h3 {
-  font-family: "Poppins";
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   font-size: 2rem;
   color: #FCFAFC;
 }

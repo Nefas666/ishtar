@@ -166,7 +166,7 @@ section#formHolder {
         font-size: 10px;
       }
       &.fontSwitch {
-        font-family: $primary-font !important;
+        font-family: $b-type !important;
         font-weight: 600;
       }
     }
@@ -180,7 +180,7 @@ section#formHolder {
       border-bottom: 1px solid #eee;
       color: $li-ish;
       font-size: 15px;
-      font-family: $primary-font;
+      font-family: $b-type;
       z-index: 1;
       &.hasError {
         border-color: $red-ish;
@@ -188,7 +188,7 @@ section#formHolder {
     }
     span.error {
       color: $bg-ish;
-      font-family: $primary-font;
+      font-family: $b-type;
       font-size: 12px;
       position: absolute;
       bottom: -20px;

@@ -21,7 +21,7 @@
       </div>
     </div>
   
-  <button class="open" id="open"><a href="before.html">BEGIN THE EXPERIMENT</a></button>
+  <button class="open" id="open" onclick="alertCookie()"><a href="before.html">BEGIN THE EXPERIMENT</a></button>
 
 
   <script>
@@ -36,6 +36,14 @@ function closeModal(){
   const close = document.getElementById("card");
   close.style.display="none";
 };
+  </script>
+  <script>
+    // document.cookie = "name=oeschger";
+    // document.cookie = "favorite_food=tripe";
+    document.cookie = "ishtar_init=started";
+    function alertCookie() {
+    // alert(document.cookie);
+  }
   </script>
  <!-- <script src="js/cookie.js">
 
