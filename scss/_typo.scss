@@ -75,3 +75,15 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     letter-spacing: 0.15em;
         
  }
+
+ @mixin h1-title-learn{
+    font-family:$b-type;
+    text-align:center;
+    color:$li-ish;
+    font-weight:900;
+    font-size:10.38em;
+    line-height: 1.85em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+        
+ }

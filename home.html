@@ -37,11 +37,23 @@ function closeModal(){
   close.style.display="none";
 };
   </script>
- <script src="js/cookie.js">
+ <!-- <script src="js/cookie.js">
 
    createCookie('ish','started', 1);
 
- </script>
+ </script> -->
+<!-- <script>
 
+var getActive = document.body.query({active: true, currentWindow: true});
+getActive.then(setCookie);
+
+function setCookie(body) {
+  browser.cookies.set({
+    url: 'http://127.0.0.1',
+    name: "favourite-colour",
+    value: "red"
+  });
+}
+</script> -->
 </body>
 </html>

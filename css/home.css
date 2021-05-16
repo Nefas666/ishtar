@@ -358,10 +358,10 @@ section.vidbox video#vid2 {
   justify-content: center;
   padding: 5%;
 }
-#wrapper div.title {
+#wrapper div.title-b4 {
   align-content: center;
 }
-#wrapper div.title h1.before {
+#wrapper div.title-b4 h1.before {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   font-size: 6.75em;
@@ -369,7 +369,7 @@ section.vidbox video#vid2 {
   color: #FCFAFC;
   text-align: left;
 }
-#wrapper div.title .paragraph {
+#wrapper div.title-b4 .paragraph {
   width: 50%;
   display: flex;
   font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
