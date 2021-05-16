@@ -297,6 +297,20 @@ body a:hover {
   text-decoration: underline;
   text-decoration-color: #810303bb;
 }
+body .glitch {
+  position: relative;
+}
+body .layers {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
+body .display {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
 body .mini-wrap {
   display: flex;
   width: 50%;
