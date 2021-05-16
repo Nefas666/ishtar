@@ -2,11 +2,12 @@
 <html>
 <head>
    
-    <link href="scss/master.scss" rel="stylesheet" type="text/css">
-    <link href="scss/_config.scss" rel="stylesheet" type="text/css">
-    <link href="scss/_colors.scss" rel="stylesheet" type="text/css">
-    <link href="scss/master.css.map" rel="stylesheet" type="text/css">
-    <link href="scss/master.css" rel="stylesheet" type="text/css">
+    <link href="css/experiment.css.map" rel="stylesheet" type="text/css">
+    <link href="css/experiment.css" rel="stylesheet" type="text/css">
+    <link href="scss/experiment.scss" rel="stylesheet" type="text/css">
+    <!-- <link href="css/master.css.map" rel="stylesheet" type="text/css">
+    <link href="css/master.css" rel="stylesheet" type="text/css">
+    <link href="scss/master.scss" rel="stylesheet" type="text/css"> -->
     <!--<link href="css/style.css" rel="stylesheet" type="text/css">-->
     <script src="js/webgazer.js" type="text/javascript" ></script>
     <script src="js/jquery.min.js" type="text/javascript" ></script>
@@ -20,7 +21,7 @@
 </head>
 <body>
     <div id="container-main">
-        <canvas id="plotting_canvas" width="" height="" style="cursor: crosshair; position: fixed;"> </canvas> 
+        <canvas id="plotting_canvas" width="" height="" style="cursor: pointer; position: fixed;"> </canvas> 
       
      <!-- calibration -->
         <div class="calibrationDiv">
@@ -96,7 +97,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="js/resize_canvas.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <div class="swal-overlay" tabindex="-1">
     <div class="swal-modal" role="dialog" aria-modal="true">
         <div class="swal-title" style="">Calibration</div>
@@ -112,7 +112,7 @@
       </div>
   
     </div></div></div></div>
-    <div id="webgazerGazeDot" style="display: none; position: fixed; z-index: 99999; left: -5px; top: -5px; background: red; border-radius: 100%; opacity: 0.7; width: 10px; height: 10px;"></div>
+    <div id="webgazerGazeDot" style="display: none; position: fixed; left: -5px; top: -5px; background: red; border-radius: 100%; opacity: 0.7; width: 10px; height: 10px;"></div>
     </div>
 </body>
 
