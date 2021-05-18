@@ -116,22 +116,8 @@ body .wrapper div.title-rep h1.t-rep {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-body .wrapper a.switch {
-  font-size: 13px;
-  font-weight: 400;
-  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
-  color: #FCFAFC;
-  text-decoration: underline;
-  transition: all 0.3s;
-  padding: 5%;
-  box-sizing: border-box;
-}
-body .wrapper a.switch:hover {
-  color: #E90003;
-}
 body .wrapper .top-bar {
   display: flex;
-  min-height: 90px;
   background: transparent;
   color: #FCFAFC;
   align-items: center;
@@ -156,14 +142,37 @@ body .wrapper .top-bar__nav-toggle:focus {
   transform: scale(1.1);
 }
 body .wrapper .top-bar__brand {
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FCFAFC;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.55em;
   color: #FCFAFC;
   transition: 0.25s;
   padding-left: 5%;
 }
+body .wrapper .top-bar__brand:hover {
+  filter: blur(140%);
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+}
 body .wrapper .top-bar__contact {
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
   color: #FCFAFC;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.55em;
   text-align: right;
   transition: 0.25s;
+}
+body .wrapper .top-bar__contact:hover {
+  filter: blur(140%);
+  background-color: transparent;
+  backdrop-filter: blur(20px);
 }
 @media (max-width: 1000px) {
   body .wrapper .top-bar__nav-toggle {
@@ -219,7 +228,7 @@ body .wrapper .top-bar__nav-list a {
 body .wrapper .top-bar__nav-list a:hover {
   transform: scale(1.2);
   filter: brightness(140%);
-  border-bottom: 2px solid #FCFAFC;
+  border-bottom: 2px solid #E90003;
 }
 body .wrapper .hamburger {
   position: relative;

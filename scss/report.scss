@@ -29,23 +29,10 @@ body {
         @include h1-title-learn();
     }
     }
-    a.switch {
-        font-size: 13px;
-        font-weight: 400;
-        font-family: $b-type;
-        color: $li-ish;
-        text-decoration: underline;
-        transition: all 0.3s;
-        padding:5%;
-        box-sizing: border-box;
-        &:hover {
-          color: $red-ish;
-        }
-    }
 
     .top-bar {
         display: flex;
-        min-height: 90px;
+        // min-height: 90px;
         background: transparent;
         color: $li-ish;
         align-items: center;
@@ -72,14 +59,15 @@ body {
         }
       
         &__brand {
+
+        @include nav-links();
           color: $li-ish;
-      
           transition: 0.25s;
           padding-left:5%;
         }
       
         &__contact {
-          color: $li-ish;
+        @include nav-links();
           text-align: right;
           transition: 0.25s;
         }
@@ -145,7 +133,7 @@ body {
             &:hover {
               transform: scale(1.2);
               filter: brightness(140%);
-              border-bottom: 2px solid $li-ish;
+              border-bottom: 2px solid $red-ish;
             }
           }
         }

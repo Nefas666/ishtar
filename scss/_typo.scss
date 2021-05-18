@@ -100,3 +100,19 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     text-transform: uppercase;
         
  }
+
+ @mixin nav-links(){
+   font-family:$b-type;
+   text-align:center;
+   text-transform: uppercase;
+   color:$li-ish;
+   text-decoration:none;
+   font-weight:400;
+   font-size:1.55em;
+
+   &:hover{
+      filter:blur(140%);
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+   }
+ }
