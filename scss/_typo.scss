@@ -30,6 +30,7 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     font-size: 6.75em;
     text-transform: uppercase;
     color:$li-ish;
+    font-weight: 900;
     
 }
 @mixin h2-count{
@@ -94,7 +95,7 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     text-align:left;
     color:$li-ish;
     font-weight:900;
-    font-size:8.13em;
+    font-size:5.13em;
     line-height: 0.85em;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -105,7 +106,7 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
    font-family:$b-type;
    text-align:center;
    text-transform: uppercase;
-   color:$li-ish;
+   color:$liH-ish;
    text-decoration:none;
    font-weight:400;
    font-size:1.55em;
@@ -113,6 +114,7 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
    &:hover{
       filter:blur(140%);
       background-color: transparent;
-      backdrop-filter: blur(20px);
+      color:$li-ish;
+   
    }
  }

@@ -78,7 +78,7 @@ section#formHolder {
     position: absolute;
     top: 50%;
     //left: 50%;
-    transform: translate(30%, -20%);
+    transform: translate(70%, -40%);
     text-align: center;
     transition: all 0.8s;
     &.active {
@@ -93,8 +93,9 @@ section#formHolder {
     span.discl {
       h4{
     @include body-copy();
-    transform: translate(0%, 20%);
-    text-align: left}
+    transform: translate(0%, 0%);
+    text-align: left
+  }
 
     }
   }
@@ -132,10 +133,10 @@ section#formHolder {
     position: absolute;
     top: 50%;
     left: 60%;
-    transform: translate(-20%, -20%);
+    transform: translate(-20%, -40%);
 
     &.switched {
-      transform: translateX(-100%);
+      transform: translateX(-80%);
       width: 100%;
       left: 0;
     }

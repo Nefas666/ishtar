@@ -21,6 +21,7 @@ body{
 
         align-content:center;
         //background-color: chartreuse;
+        margin-top: 10%;
 
         h1.before{
             @include h1-title-before();
@@ -40,6 +41,7 @@ body{
         align-content:space-between;
         justify-content: space-evenly;
         width:55%;
+        margin-top: 3%;
 
         button.open{
 
