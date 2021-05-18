@@ -7,22 +7,41 @@
     <link rel="stylesheet" href="scss/home.scss" alt=""> 
     <link rel="stylesheet" href="css/home.css" alt=""> 
     <link rel="stylesheet" href="css/home.css.map" alt=""> 
-    <link rel="stylesheet" href="scss/how.scss" alt=""> 
-    <link rel="stylesheet" href="css/how.css.map" alt=""> 
-    <link rel="stylesheet" href="css/how.css" alt=""> 
+    <link rel="stylesheet" href="scss/report.scss" alt=""> 
+    <link rel="stylesheet" href="css/report.css.map" alt=""> 
+    <link rel="stylesheet" href="css/report.css" alt=""> 
+    
 
 
     <title>the report</title>
 </head>
 <body>
     <div class="wrapper" id="wrapper">
-        <div class="title-how">
-            <h1 class="t-how">Who's Behind</h1>
+        <div class="top-bar">
+            <button class="top-bar__nav-toggle hamburger" onclick="openClosenav();" id="top-nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <span> <a href="home.html" class="top-bar__brand">Ishtar</a></span>  
+              <span><a href="learn-more.html" class="top-bar__contact">
+                learn more</a></span>
+        
+            <nav class="top-bar__nav collapsed" id="top-bar__nav">
+              <ul class="top-bar__nav-list ">
+                <li><a href="learn-more.html">Learn More</a></li>
+                <li><a href="the-experiment.html">The Experiment</a></li>
+                <li><a href="who-behind.html">Who's Behind</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+              </ul>
+            </nav>
         </div>
-          <a href="home.html" class="switch">Go Back to Home</a>
-          <a href="how-it-works.html" class="switch">Skip How it works</a>
-          <a href="learn-more.html" class="switch">Return to Learn More</a>
-  
+          
+        
+        
+        <div class="title-rep">
+            <h1 class="t-rep">The report</h1>
+    </div>
            
         <!-- <div class="card" id="card">
             <div class="heading">
@@ -36,8 +55,40 @@
                         <button onclick="closeModal()" class="close">
                             &#x2716;
                         </button>
-                </div>
-    </div> -->
+                </div>-->
+    </div>
+    <script>
+    
+    (function() {
+        if (document.querySelector("#top-nav-toggle")) {
+          var navToggle = document.querySelector("#top-nav-toggle");
+      
+          function watchNavClose(e) {
+            var topNav = document.querySelector(".top-bar");
+            if (!e.path.includes(topNav)) {
+              openCloseNav();
+              document.documentElement.removeEventListener("click", watchNavClose);
+            }
+          }
+      
+          function openCloseNav() {
+            var navToggle = document.querySelector("#top-nav-toggle");
+      
+            if (!navToggle.classList.contains("closed")) {
+              navToggle.classList.add("closed");
+              document.querySelector("#top-bar__nav").classList.remove("collapsed");
+              document.querySelector("html").addEventListener("click", watchNavClose);
+            } else {
+              navToggle.classList.remove("closed");
+              document.querySelector("#top-bar__nav").classList.add("collapsed");
+              document.documentElement.removeEventListener("click", watchNavClose);
+            }
+          }
+      
+          navToggle.addEventListener("click", openCloseNav);
+        }
+      })();
+      </script>
     
 
     <script>
