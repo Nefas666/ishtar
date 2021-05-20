@@ -747,171 +747,33 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
-  /* Calibration button styling */
+  width: 100%;
 }
-body .calibrationDiv {
-  box-sizing: border-box;
-  display: block;
-  /* Calibration point position */
+body #wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5%;
 }
-body .calibrationDiv .Calibration {
-  width: 20px;
-  height: 20px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  background-color: red;
-  opacity: 0.2;
-  border-color: black;
-  border-style: solid;
-  position: fixed;
-}
-body .calibrationDiv #Pt1 {
-  top: 70px;
-  left: 340px;
-}
-body .calibrationDiv #Pt2 {
-  top: 70px;
-  left: 50vw;
-  margin-left: 340;
-}
-body .calibrationDiv #Pt3 {
-  top: 70px;
-  right: 2vw;
-}
-body .calibrationDiv #Pt4 {
-  top: 50vh;
-  left: 2vw;
-}
-body .calibrationDiv #Pt5 {
-  top: 50vh;
-  left: 50vw;
-}
-body .calibrationDiv #Pt6 {
-  top: 50vh;
-  right: 2vw;
-}
-body .calibrationDiv #Pt7 {
-  bottom: 2vw;
-  left: 2vw;
-}
-body .calibrationDiv #Pt8 {
-  bottom: 2vw;
-  left: 50vw;
-}
-body .calibrationDiv #Pt9 {
-  bottom: 2vw;
-  right: 2vw;
-}
-body #webgazerVideoContainer {
-  display: block !important;
-  position: fixed !important;
-  top: 0px !important;
-  left: 0px !important;
-  width: 320px !important;
-  height: 240px !important;
-  z-index: 1;
-}
-body .navbar {
-  position: fixed;
-  box-shadow: 0px 3px 5px #ddd;
-  margin: 0 25% auto;
-}
-body #Accuracy {
-  background-color: #222;
-  padding-left: inherit;
-}
-body #Accuracy a {
-  background-color: #222;
-  color: #eee;
-  left: -15px;
-  padding-left: 80px;
-  padding-right: 40px;
-}
-body li {
-  padding-left: 50px;
-}
-body .navbar-right li {
-  padding-right: 20px;
-}
-body .helpBtn {
-  padding: 15px;
-  border: none;
-  background: none;
-  color: #777;
-}
-body .helpBtn a {
-  background: none;
-  color: #777;
-}
-body .modal-header {
-  border-bottom: none !important;
-}
-body .swal-overlay:before {
-  content: " ";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-body #container-main {
-  width: 1920px;
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: auto;
-  overflow: hidden;
-}
-body #webgazerGazeDot {
-  display: none;
-  position: fixed;
-  z-index: 999999;
-  left: -5px;
-  top: -5px;
-  background: red;
-  border-radius: 100%;
-  opacity: 0.7;
-  width: 10px;
-  height: 10px;
-}
-body .modal-dialogue .modal-content {
-  background-color: #f5f5f523;
-  height: auto;
-  width: 30vw;
-  box-shadow: 0px 0px 14px 1px #dd6ff8;
-  margin: 15% auto;
-  padding: 1.5rem;
-}
-body .modal-dialogue .modal-content .modal-body {
-  color: #FCFAFC;
-}
-body .modal-dialogue .modal-content .modal-open {
-  overflow: hidden;
-}
-body .modal-dialogue .modal-content button#closeBtn {
-  color: #252525;
-  font-size: 2.25rem;
-  font-weight: bold;
-  margin-right: 1rem;
-}
-body section.vidbox {
+body #wrapper section.vidbox {
   margin-top: 200px;
   display: flex;
   flex-direction: row;
   align-content: space-between;
 }
-body section.vidbox video#vid1 {
+body #wrapper section.vidbox video#vid1 {
   width: 680px;
   height: 450px;
   margin-right: 50px;
   z-index: 1;
   justify-self: flex-end;
 }
-body section.vidbox video#vid2 {
+body #wrapper section.vidbox video#vid2 {
   width: 680px;
   height: 450px;
   z-index: 1;
   justify-self: flex-start;
 }
 
-/*# sourceMappingURL=experiment.css.map */
+/*# sourceMappingURL=experiment%20copy.css.map */
