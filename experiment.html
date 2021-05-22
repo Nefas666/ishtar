@@ -8,6 +8,7 @@
     <script src="js/jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="js/jsPsych/plugins/jspsych-html-button-response.js"></script>
     <script src="js/jsPsych/plugins/jspsych-html-image-response.js"></script>
+    <script src="js/jsPsych/plugins/jspsych-video-button-response.js"></script>
     <script src="js/jsPsych/plugins/jspsych-preload.js"></script>
     <script src="js/jsPsych/extensions/jspsych-ext-webgazer.js"></script>
     <script src="js/jsPsych/plugins/jspsych-webgazer-init-camera.js"></script>
@@ -131,8 +132,8 @@
 
     var calibration = {
         type: 'webgazer-calibrate',
-        calibration_points: [[10,10],[10,50],[10,90],
-          [70,10],[70,50],[70,90]],
+        calibration_points: [[10,10],[10,90],
+          [70,10],[70,90]],
         calibration_mode: 'view',
         time_to_saccade:2000,
         time_per_point:2000,
@@ -154,78 +155,74 @@
       data: {
         raw_gaze:[],
         percent_in_roi:[],
-        validation_points:[],
+        validation_points:[]
       },
      };
-
-
     timeline.push(validation);
 
-    var fixation = {
-      type: 'image-buttons-response',
-      stimulus: ` <div class='container' style='width: 100%;'>
-          <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
-            <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
-            <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
-          </div>
-        </div>
-       
-      `,
-      choices:['Violence', 'Sex'],
+    var test_stimuli =[
+      {stimulus:'vid/sex.mp4', left_response:true},
+    {stimulus:'vid/violence.mp4', left_response:false} 
+    ];
+
+    var test = {
+      type: 'video-button-response',
+      stimulus:jsPsych.timelineVariable('test_stimuli'),
+      choices:['true','false'],
+      data:{
+        task:'response',
+        left_response:jsPsych.timelineVariable('left_response')
+      },
       trial_duration: 2000,
-      extensions: [
-        {
-          type: 'webgazer', 
-          params: {targets: ['#jspsych-image-keyboard-response-stimulus'],
-                    wegazer_data:[],
-                    webgazer_targets:[]
-                  }
-                }
-              ]
-            };
-            
-            timeline.push(fixation);
+      on_finish: function(data){
+        data.valid = jsPsych.pluginAPI.compareKeys(data.response, data.left_response);
+      }
+    };
+    timeline.push(test);
 
- 
-//     var test = {
-//       type: "image-keyboard-response",
-//       stimulus: jsPsych.timelineVariable('stimulus'),
-//       choices: ['f', 'j'],
-//       data: {
-//         task: 'response', 
-//         correct_response:jsPsych.timelineVariable('correct_response')
-//       },
-//       on_finish: function(data){
-//         data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
-//       }
+    var test_procedure = {
+          timeline: [calibration, validation, test],
+          timeline_variables: test_stimuli,
+          randomize_order:true,
+          repetitions:1,
+        on_timeline_start: function() {
+          alert('The trial procedure just started.')
+        },
+        on_timeline_finish: function() {
+            alert('The trial procedure just finished.')
+        }
+    };
+
+    timeline.push(test_procedure);
+
+    var debrief_block = {
+    type: "html-keyboard-response",
+    stimulus: function() {
+
+        var exit = jsPsych.data.get().filter({task: 'response'});
+        var v_exit = exit.filter({valid: true});
+        var accuracy = Math.round(v_exit.count() / exit.count() * 100);
+        var rt = Math.round(v_exit.select('rt').mean());
+
+        return `<p>You responded correctly on ${accuracy}% of the trials.</p>
+          <p>Your average response time was ${rt}ms.</p>
+          <p>Press any key to complete the experiment. Thank you!</p>`;
+
+      }
+    };
+
+timeline.push(debrief_block);
+
+
+// var test_procedure = {
+//     timeline: [calibration, validation, test],
+//     on_timeline_start: function() {
+//         alert('The trial procedure just started.')
+//     },
+//     on_timeline_finish: function() {
+//         alert('The trial procedure just finished.')
 //     }
-//     var test_procedure = {
-//           timeline: [fixation, test],
-//           timeline_variables: test_stimuli,
-//           randomize_order:true,
-//           repetitions:5
-//         }
-    
-
-//     timeline.push(test_procedure);
-
-//     var debrief_block = {
-//     type: "html-keyboard-response",
-//     stimulus: function() {
-
-//         var trials = jsPsych.data.get().filter({task: 'response'});
-//         var correct_trials = trials.filter({correct: true});
-//         var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
-//         var rt = Math.round(correct_trials.select('rt').mean());
-
-//         return `<p>You responded correctly on ${accuracy}% of the trials.</p>
-//           <p>Your average response time was ${rt}ms.</p>
-//           <p>Press any key to complete the experiment. Thank you!</p>`;
-
-//       }
-//     };
-
-// timeline.push(debrief_block);
+// }
 
 /* start the experiment */
 jsPsych.init({
@@ -235,7 +232,11 @@ jsPsych.init({
       type: 'webgazer',
       params: {
         auto_initialize:true,
-        round_predictions:true
+        round_predictions:true,
+      },
+      data: {
+        webgazer_data:true,
+        webgazer_targets:true
       }
   }
   ],
