@@ -72,7 +72,7 @@
   type: 'html-button-response',
   stimulus: `<p>Welcome to Ishtar, the neurobiological experience. Press any button to begin.</p>`,
   choices: ['Violence', 'Sex'],
-  prompt: "<p>Is this activity healthy or unhealthy?</p>",
+  prompt: "<p>This choice won't affect the final report</p>",
   button_html:'<button class="jspsych-btn">%choice%</button>'
   };
   timeline.push(welcome);
@@ -85,14 +85,85 @@
   timeline.push(init_camera_trial);
 
     var instructions = {
-      type: "html-keyboard-response",
+      type: "html-button-response",
       stimulus: `
         <p>In this experiment you'll see appearing two different types of content: <br />
           on the left, a <strong>violent</strong> one and on the right an <strong>erotic</strong> content.</p>
         <p>These content will appear randomly unless you select one of the hashtag</p>
-        <p>To stop the experiment click on the <strong>
-        as fast as you can.</p>
+        <p>Before approaching the experiment, you'll be asked to make an eye gaze calibration test</p>
         <div class='container' style='width: 100%;'>
+          <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
+            <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
+            <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
+          </div>
+          <p>Click on the button to access the calibration test</p>
+        </div>
+      `,
+      choices: ['Proceed'],
+      button_html:'<button class="jspsych-btn">%choice%</button>',
+      post_trial_gap: true
+    };
+    timeline.push(instructions);
+
+    var pre_calib = {
+  type: 'html-button-response',
+  stimulus: `<p style="text-align:left;">Before starting, you'll need to complete our calibration test by gazing straight to the gray points that'll appear</p>
+  <h4>In order to complete the calibration efficiently, remember to:</h4>
+  <ul style="text-align:left;">
+    <li>
+      Perform the eye tracking experiments in a well-lit room.
+      </li>
+      <li>
+        Keep your head relatively still during and after calibration.
+      </li>
+      <li>
+        Keep your device on an average distance of 15,7 inches (40cm) during both calibration and experiment. 
+      </li>
+      <li>
+        Close any non-essential software and browser windows prior to completing the experiment.
+      </li>
+    </<ul>`,
+  choices: ["Proceed"],
+  button_html:'<button class="jspsych-btn">%choice%</button>'
+  };
+  timeline.push(pre_calib);
+
+
+    var calibration = {
+        type: 'webgazer-calibrate',
+        calibration_points: [[10,10],[10,50],[10,90],
+          [70,10],[70,50],[70,90]],
+        calibration_mode: 'view',
+        time_to_saccade:2000,
+        time_per_point:2000,
+        randomize_calibration_order:true,
+        repetitions_per_point:1
+      };
+      timeline.push(calibration);
+
+
+      var validation= {
+      type: 'webgazer-validate',
+      validation_points: [[-400,400],[400,400],[-400,-400],[400,-400]],
+      validation_point_coordinates: 'center-offset-pixels',
+      roi_radius: 100,
+      show_validation_data:true,
+      time_to_saccade:2000,
+      time_per_point:2000,
+      point_size:20,
+      data: {
+        raw_gaze:[],
+        percent_in_roi:[],
+        validation_points:[],
+      },
+     };
+
+
+    timeline.push(validation);
+
+    var fixation = {
+      type: 'image-buttons-response',
+      stimulus: ` <div class='container' style='width: 100%;'>
           <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
             <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
             <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
@@ -100,89 +171,68 @@
         </div>
        
       `,
-      post_trial_gap: 1000
-    };
-    timeline.push(instructions);
+      choices:['Violence', 'Sex'],
+      trial_duration: 2000,
+      extensions: [
+        {
+          type: 'webgazer', 
+          params: {targets: ['#jspsych-image-keyboard-response-stimulus'],
+                    wegazer_data:[],
+                    webgazer_targets:[]
+                  }
+                }
+              ]
+            };
+            
+            timeline.push(fixation);
 
-    var calibration= {
-        type: 'webgazer-calibrate',
-        calibration_points: [[10,10],[10,50],[10,90],
-          [30,10],[30,50],[30,90],
-          [40,10],[40,30],[40,40],[40,45],[40,50],[40,55],[40,60],[40,70],[40,90],
-          [50,10],[50,30],[50,40],[50,45],[50,50],[50,55],[50,60],[50,70],[50,90],
-          [60,10],[60,30],[60,40],[60,45],[60,50],[60,55],[60,60],[60,70],[60,90],
-          [70,10],[70,50],[70,90],
-          [90,10],[90,50],[90,90]],
-        calibration_mode: 'view',
-        time_to_saccade:1000,
-        time_per_point:1000,
-        randomize_calibration_order:true,
-        repetitions_per_point:5
-      };
-      timeline.push(calibration);
-
-
-    var test_stimuli = [
-    { stimulus: "vid/sex.mp4", correct_response:'f'},
-    { stimulus: "vid/violence.mp4", correct_response:'j'}
-    ];
-
-      var fixation = {
-      type: 'html-keyboard-response',
-      stimulus: '<div style="font-size:60px;">+</div>',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: function(){
-        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-      },
-      data: {
-        task:'fixation'
-      }
-    }
-    var test = {
-      type: "image-keyboard-response",
-      stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: ['f', 'j'],
-      data: {
-        task: 'response', 
-        correct_response:jsPsych.timelineVariable('correct_response')
-      },
-      on_finish: function(data){
-        data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
-      }
-    }
-    var test_procedure = {
-          timeline: [fixation, test],
-          timeline_variables: test_stimuli,
-          randomize_order:true,
-          repetitions:5
-        }
+ 
+//     var test = {
+//       type: "image-keyboard-response",
+//       stimulus: jsPsych.timelineVariable('stimulus'),
+//       choices: ['f', 'j'],
+//       data: {
+//         task: 'response', 
+//         correct_response:jsPsych.timelineVariable('correct_response')
+//       },
+//       on_finish: function(data){
+//         data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+//       }
+//     }
+//     var test_procedure = {
+//           timeline: [fixation, test],
+//           timeline_variables: test_stimuli,
+//           randomize_order:true,
+//           repetitions:5
+//         }
     
 
-    timeline.push(test_procedure);
+//     timeline.push(test_procedure);
 
-    var debrief_block = {
-    type: "html-keyboard-response",
-    stimulus: function() {
+//     var debrief_block = {
+//     type: "html-keyboard-response",
+//     stimulus: function() {
 
-        var trials = jsPsych.data.get().filter({task: 'response'});
-        var correct_trials = trials.filter({correct: true});
-        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
-        var rt = Math.round(correct_trials.select('rt').mean());
+//         var trials = jsPsych.data.get().filter({task: 'response'});
+//         var correct_trials = trials.filter({correct: true});
+//         var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+//         var rt = Math.round(correct_trials.select('rt').mean());
 
-        return `<p>You responded correctly on ${accuracy}% of the trials.</p>
-          <p>Your average response time was ${rt}ms.</p>
-          <p>Press any key to complete the experiment. Thank you!</p>`;
+//         return `<p>You responded correctly on ${accuracy}% of the trials.</p>
+//           <p>Your average response time was ${rt}ms.</p>
+//           <p>Press any key to complete the experiment. Thank you!</p>`;
 
-      }
-    };
+//       }
+//     };
 
-timeline.push(debrief_block);
+// timeline.push(debrief_block);
 
 /* start the experiment */
 jsPsych.init({
   timeline: timeline,
   extensions: [
-    {type: 'webgazer',
+    {
+      type: 'webgazer',
       params: {
         auto_initialize:true,
         round_predictions:true
