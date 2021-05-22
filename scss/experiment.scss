@@ -170,6 +170,34 @@ li {
     height: 10px;
 }
 
+.buttonish{
+    margin-top: 1em;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: $home-bg-temp;
+    border: solid 1px $gradient-temp1;
+    backdrop-filter: blur(20px);
+    font-family: $b-type;
+    font-weight: 200;
+    font-size: 1rem;
+    color:$li-ish;
+    box-shadow: 0 0 0 1px rgba(216, 211, 211, 0.5);
+    transition: all 0.16s ease-in;
+    z-index:2;
+    &:hover {
+        background: none;
+        top: -0.5px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+    }
+    
+    &:active {
+        background: none;
+        top: -0.5px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+        border:none;
+      }
+}
+
 //calibration
 
 // .calibrationDiv {
@@ -242,7 +270,7 @@ section.vidbox {
     }
 }
 
-button.close{
+.close{
     border:none;
     position: absolute;
     z-index: 1;
@@ -274,31 +302,32 @@ label, p{
         font-weight:200;
 }
 
-.card{
+.wegazer-init-container{
 
-    position: absolute;
-    height: fit-content;
+    position: relative;
+    width:50%;
+    height:40%;
+    // height: fit-content;
     background: rgba(255, 255, 255, 0.2);
     border: solid 1px rgba(87, 0, 0, 0.7);
     border-radius: 5px;
     padding: 4rem 2rem 1rem 2rem;
     box-shadow: 0px 8px 20px rgba(0,0,0, .15);
-    display: none;
+    display: flex;
     flex-direction: column;
+    justify-content:center;
     backdrop-filter: blur(20px);
     z-index:100;
     transition: width 1s,
         height 350ms;
 
-    div.b{
-
-        p{
+        .h{
             font-family: $b-type;
-            font-size: 2rem; 
+            font-size: 1.07em; 
             color:$li-ish;
+            justify-content:center;
         }
 
-    }
 
     .button{
         display: flex;
@@ -328,7 +357,4 @@ label, p{
 
    
     }
-
-
-    
 }
