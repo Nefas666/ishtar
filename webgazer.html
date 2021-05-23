@@ -27,25 +27,25 @@
 
 <script>
 
-var test_stimuli =[{stimulus:'vid/sex.mp4'},{stimulus:'vid/violence.mp4'}];
-var n_loaded = 0;
+// var test_stimuli =[{stimulus:'vid/sex.mp4'},{stimulus:'vid/violence.mp4'}];
+// var n_loaded = 0;
 
-    jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
+//     jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
 
-    function updateLoadedCount(file){
-      n_loaded++;
-        var percentcomplete = n_loaded / test_stimuli.length * 100;
+//     function updateLoadedCount(file){
+//       n_loaded++;
+//         var percentcomplete = n_loaded / test_stimuli.length * 100;
 
-        // could put something fancier here, like a progress bar
-        // or updating text in the DOM.
-        console.log('Loaded '+percentcomplete+'% of videos');
-    }
+//         // could put something fancier here, like a progress bar
+//         // or updating text in the DOM.
+//         console.log('Loaded '+percentcomplete+'% of videos');
+//     }
 
-    function startExperiment(){
-      jsPsych.init({
-        timeline: exp
-      })
-    };
+//     function startExperiment(){
+//       jsPsych.init({
+//         timeline: exp
+//       })
+//     };
 
   var camera_instructions = {
     type: 'html-button-response',
@@ -116,15 +116,15 @@ var n_loaded = 0;
   var task_instructions = {
     type: "html-button-response",
     stimulus: `
-      <p>In this experiment you'll see appearing two different types of content: <br />
+      <p style="font-size:1.87em;">In this experiment you'll see appearing two different types of content: <br />
         on the right, a <strong>violent</strong> one and on the left an <strong>erotic</strong> content.</p>
-      <p>These content will appear randomly selected from a group of 35 videos for each category</p>
+      <p style="font-size:1.07em;line-height:2em;">These content will appear randomly selected from a group of 35 videos for each category</p>
       <div class='container' style='width: 100%;'>
         <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
           <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
           <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
         </div>
-        <p>Click on the button to access the calibration test</p>
+        <p style="font-size:1.07em;line-height:2em;">Click on the button to access the calibration test</p>
       </div>
     `,
     choices: ['PROCEED'],
@@ -139,52 +139,39 @@ var n_loaded = 0;
     trial_duration: 500    
   }
 
-  var trial = {
-    type: 'html-keyboard-response',
-    stimulus: function () {
-      return(
-      `<div style="position: relative; width: 400px; height: 400px;">
-        <div style="position: absolute; top:${jsPsych.timelineVariable('top', true)}%; left: ${jsPsych.timelineVariable('left', true)}%">
-          <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'> true) ${jsPsych.timelineVariable('test_stimuli') == 'left'}
-            <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
-            <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
-          </div>
-        </div>
-      </div>
-      `
-      )
-    },
-    choices: ['0', '1'],
-    post_trial_gap: 750,
-    data: {
-      top: jsPsych.timelineVariable('top'),
-      left: jsPsych.timelineVariable('left'),
-      stimulus_type: 'congruent',
-      target_direction: 'left'
-    },
-    extensions: [
-      {type: 'webgazer',
-      params: {
-        targets: ['.vidSection'],
-        auto_initialize:true,
-        round_predictions:true
-      }
-    }
-    ]
-  }
-
-  var params = [
-    { left: 100, top: 100, direction: 'left' },
-    { left: 100, top: 100, direction: 'right' }
+  var timeline_variables =[
+    {video:'vid/sex.mp4'},
+    {video:'vid/sex_2.mp4'},
+    {video:'vid/sex_3.mp4'},
+    {video:'vid/sex_4.mp4'},
+    {video:'vid/violence.mp4'},
+    {video:'vid/violence_2.mp4'},
+    {video:'vid/violence_3.mp4'},
+    {video:'vid/violence_4.mp4'}
   ]
 
-  var trial_proc = {
-    timeline: [fixation, trial],
-    timeline_variables: params,
-    randomize_order: false
+  var video_trial = {
+    type: 'html-keyboard-response',
+    stimulus: jsPsych.timelineVariable('video'),
+    choices:jsPsych.NO_KEYS,
+    post_trial_gap: 750,
+    trial_duration: function(){
+    return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+  }
   }
 
-  var done = {
+  // var trial_params = [
+  //   { left: 100, top: 100, left: 'true' },
+  //   { right: 100, top: 100, right: 'true' }
+  // ]
+
+  var trial_procedure = {
+    timeline: [fixation,video_trial],
+    timeline_variables: timeline_variables,
+    randomize_order: true
+  }
+
+  var trial_done = {
     type: 'html-button-response',
     choices: ['CSV', 'JSON'],
     button_html:'<button class="buttonish">%choice%</button>',
@@ -215,12 +202,23 @@ var n_loaded = 0;
   timeline.push(validation_instructions);
   timeline.push(validation);
   timeline.push(task_instructions);
-  timeline.push(trial_proc);
-  timeline.push(done);
+  timeline.push(trial_procedure);
+  timeline.push(trial_done);
 
 
   jsPsych.init({
     timeline: timeline,
+    preload_video:[
+    'vid/sex.mp4',
+    'vid/sex_2.mp4',
+    'vid/sex_3.mp4',
+    'vid/sex_4.mp4',
+   'vid/violence.mp4',
+    'vid/violence_2.mp4' ,
+    'vid/violence_3.mp4',
+    'vid/violence_4.mp4'
+
+    ],
     extensions: [
       {type: 'webgazer'}
     ]

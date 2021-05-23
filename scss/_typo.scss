@@ -76,6 +76,16 @@ $light-guy:"Roboto",'Arial', Helvetica, Geneva, sans-serif;
     letter-spacing: 0.15em;
         
  }
+ @mixin body-copy-how2{
+   font-family:$light-guy;
+   text-align:left;
+   color:$li-ish;
+   font-weight:300;
+   font-size:1.58em;
+   line-height: 1.85em;
+   letter-spacing: 0.15em;
+       
+}
 
  @mixin h1-title-learn{
     font-family:$b-type;

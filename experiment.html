@@ -71,7 +71,16 @@
   var timeline=[];
   var preload = {
       type: 'preload',
-      video: ['vid/sex.mp4', 'vid/violence.mp4']
+      video: [
+      'vid/sex.mp4',
+    'vid/sex_2.mp4',
+    'vid/sex_3.mp4',
+    'vid/sex_4.mp4',
+   'vid/violence.mp4',
+    'vid/violence_2.mp4',
+    'vid/violence_3.mp4',
+    'vid/violence_4.mp4'
+]
     }
     timeline.push(preload);
 
@@ -89,12 +98,12 @@
   };
   timeline.push(welcome);
 
-  var init_camera_trial = {
-  type: "webgazer-init-camera"
+  // var init_camera_trial = {
+  // type: "webgazer-init-camera"
 
-  };
+  // };
 
-  timeline.push(init_camera_trial);
+  // timeline.push(init_camera_trial);
 
     var instructions = {
       type: "html-button-response",
@@ -118,59 +127,67 @@
 
   
 
-    var test_stimuli =['vid/sex.mp4','vid/violence.mp4'];
-    var n_loaded = 0;
+    // var test_stimuli =['vid/sex.mp4','vid/violence.mp4'];
+    // var n_loaded = 0;
 
-    jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
+    // jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
 
-    function updateLoadedCount(file){
-      n_loaded++;
-        var percentcomplete = n_loaded / test_stimuli.length * 100;
+    // function updateLoadedCount(file){
+    //   n_loaded++;
+    //     var percentcomplete = n_loaded / test_stimuli.length * 100;
 
-        // could put something fancier here, like a progress bar
-        // or updating text in the DOM.
-        console.log('Loaded '+percentcomplete+'% of videos');
-    }
+    //     // could put something fancier here, like a progress bar
+    //     // or updating text in the DOM.
+    //     console.log('Loaded '+percentcomplete+'% of videos');
+    // }
 
-    function startExperiment(){
-      jsPsych.init({
-        timeline: exp
-      })
-    };
+    // function startExperiment(){
+    //   jsPsych.init({
+    //     timeline: exp
+    //   })
+    // };
+
+    var test_violent =[
+    {video:'vid/violence.mp4'},
+    {video:'vid/violence_2.mp4'},
+    {video:'vid/violence_3.mp4'},
+    {video:'vid/violence_4.mp4'}
+  ]
+
+
+  var test_sex =[
+    {video:'vid/sex.mp4'},
+    {video:'vid/sex_2.mp4'},
+    {video:'vid/sex_3.mp4'},
+    {video:'vid/sex_4.mp4'}
+  ]
+
 
     var test = {
       type: 'video-button-response',
-      stimulus:['vid/sex.mp4','vid/violence.mp4'],
+      stimulus:['vid/sex.mp4','vid/violence_4.mp4'],
         width:400,
         height:200,
         autoplay:true,
         controls:true,
       choices:['true','false'],
+  
       data:{
         task:'response',
         left_response:jsPsych.timelineVariable('true')
-      },
-      trial_ends_after_video:true,
-      trial_duration:50000,
-      on_finish: function(data){
-        data.valid = jsPsych.pluginAPI.compareKeys(data.response, data.left_response);
       }
-    };
-    timeline.push(test);
-
-    
+      // trial_ends_after_video:true,
+      // on_finish: function(data){
+      //   data.valid = jsPsych.pluginAPI.compareKeys(data.response, data.left_response);
+      // }
+    }
+  
 
     var test_procedure = {
-          timeline:  test,
-          timeline_variables: test_stimuli,
-          randomize_order:true,
-          repetitions:1,
-        on_timeline_start: function() {
-          alert("The trial procedure just started.")
-        },
-        on_timeline_finish: function() {
-            alert('The trial procedure just finished.')
-        }
+          timeline: test,
+          timeline_variables: test_violent,test_sex,
+          repetitions:4,
+          randomize_order: true
     };
 
     timeline.push(test_procedure);
@@ -213,8 +230,7 @@ jsPsych.init({
       params: {
         auto_initialize:false,
         round_predictions:true,
-      },
-      targets:['vid/sex.mp4', 'vid/violence.mp4']
+      }
   }
   ],
   on_finish: function() {
