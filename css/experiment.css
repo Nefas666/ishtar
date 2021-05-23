@@ -718,18 +718,6 @@ body #container-main {
   grid-template-rows: auto;
   overflow: hidden;
 }
-body #webgazerGazeDot {
-  display: none;
-  position: fixed;
-  z-index: 999999;
-  left: -5px;
-  top: -5px;
-  background: red;
-  border-radius: 100%;
-  opacity: 0.7;
-  width: 10px;
-  height: 10px;
-}
 body .buttonish {
   margin-top: 1em;
   padding: 1rem 2rem;

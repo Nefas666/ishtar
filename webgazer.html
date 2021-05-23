@@ -27,13 +27,33 @@
 
 <script>
 
+var test_stimuli =[{stimulus:'vid/sex.mp4'},{stimulus:'vid/violence.mp4'}];
+var n_loaded = 0;
+
+    jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
+
+    function updateLoadedCount(file){
+      n_loaded++;
+        var percentcomplete = n_loaded / test_stimuli.length * 100;
+
+        // could put something fancier here, like a progress bar
+        // or updating text in the DOM.
+        console.log('Loaded '+percentcomplete+'% of videos');
+    }
+
+    function startExperiment(){
+      jsPsych.init({
+        timeline: exp
+      })
+    };
+
   var camera_instructions = {
     type: 'html-button-response',
     stimulus: `
-      <p style="font-size:1.87em;">This experiment uses your camera for eye tracking.</p>
-      <p style="font-size:1.17em;">In order to participate you must allow the experiment to use your camera.</p>
-      <p style="font-size:1.17em;">You will be prompted to do this on the next screen.</p>
-      <p style="font-size:1.17em;">If you do not want to permit the experiment to use your camera, please close the page.</p>
+      <p style="font-size:1.87em;">This experiment uses your camera for eye tracking.</p><br /><br />
+      <p style="font-size:1.17em; line-height:2em;">In order to participate you must allow the experiment to use your camera.</p>
+      <p style="font-size:1.17em;line-height:2em;">You will be prompted to do this on the next screen.</p>
+      <p style="font-size:1.17em;line-height:2em;">If you do not want to permit the experiment to use your camera, please close the page.</p>
     `,
     choices: ['CLICK TO BEGIN'],
     button_html:'<button class="buttonish">%choice%</button>',
@@ -42,16 +62,16 @@
 
   var init_camera = {
     type: 'webgazer-init-camera',
-    css_classes:['wegazer-init-container', 'h']
+    css_classes:['wegazer-init-container', 'h', 'buttonish']
     
   }
 
   var calibration_instructions = {
     type: 'html-button-response',
     stimulus: `
-      <p>Great! Now the eye tracker will be calibrated to translate the image of your eyes from the webcam to a location on your screen.</p>
-      <p>To do this, you need to click a series of dots.</p>
-      <p>Keep your head still, and click on each dot as it appears. Look at the dot as you click it.</p>
+      <p style="font-size:1.87em;>Great! Now the eye tracker will be calibrated to translate<br/> the image of your eyes from the webcam to a location on your screen.</p><br /><br />
+      <p style="font-size:1.07em;line-height:2em;"">To do this, you need to click a series of dots.</p>
+      <p style="font-size:1.07em;line-height:2em;"">Keep your head still, and click on each dot as it appears. Look at the dot as you click it.</p>
     `,
     choices: ['Click to begin'],
     button_html:'<button class="buttonish">%choice%</button>',
@@ -77,18 +97,20 @@
   var validation_instructions = {
     type: 'html-button-response',
     stimulus: `
-      <p>Let's see how accurate the eye tracking is. </p>
-      <p>Keep your head still, and move your eyes to focus on each dot as it appears.</p>
-      <p>You do not need to click on the dots. Just move your eyes to look at the dots.</p>
+      <p style="font-size:1.87em;">Let's see how accurate the eye tracking is. </p><br /><br/>
+      <p style="font-size:1.07em;line-height:2em;">Keep your head still, and move your eyes to focus on each dot as it appears.</p>
+      <p style="font-size:1.07em;line-height:2em;">You do not need to click on the dots. Just move your eyes to look at the dots.</p>
     `,
-    choices: ['Click to begin'],
+    choices: ['CLICK TO BEGIN'],
+    button_html:'<button class="buttonish">%choice%</button>',
     post_trial_gap: 1000
   }
 
   var validation = {
     type: 'webgazer-validate',
     validation_points: [[25,25], [25,75], [75,25], [75,75]],
-    show_validation_data: true
+    show_validation_data: true,
+    randomize_calibration_order: true
   }
 
   var task_instructions = {
@@ -105,7 +127,7 @@
         <p>Click on the button to access the calibration test</p>
       </div>
     `,
-    choices: ['Proceed'],
+    choices: ['PROCEED'],
     button_html:'<button class="buttonish">%choice%</button>',
     post_trial_gap: 1000
   }
@@ -123,42 +145,49 @@
       return(
       `<div style="position: relative; width: 400px; height: 400px;">
         <div style="position: absolute; top:${jsPsych.timelineVariable('top', true)}%; left: ${jsPsych.timelineVariable('left', true)}%">
-          <span id="arrow-target" style="font-size: 40px; transform: translate(-50%, -50%);">${jsPsych.timelineVariable('direction', true) == 'left' ? '⬅' : '➡'}</span>
+          <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'> true) ${jsPsych.timelineVariable('test_stimuli') == 'left'}
+            <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
+            <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
+          </div>
         </div>
-      </div>`
+      </div>
+      `
       )
     },
-    choices: ['a', 'l'],
+    choices: ['0', '1'],
     post_trial_gap: 750,
     data: {
       top: jsPsych.timelineVariable('top'),
-      left: jsPsych.timelineVariable('left')
+      left: jsPsych.timelineVariable('left'),
+      stimulus_type: 'congruent',
+      target_direction: 'left'
     },
     extensions: [
-      {type: 'webgazer', params: {targets: ['#arrow-target']}}
+      {type: 'webgazer',
+      params: {
+        targets: ['.vidSection'],
+        auto_initialize:true,
+        round_predictions:true
+      }
+    }
     ]
   }
 
   var params = [
-    { left: 0, top: 0, direction: 'left' },
-    { left: 100, top: 0, direction: 'left' },
-    { left: 0, top: 100, direction: 'left' },
     { left: 100, top: 100, direction: 'left' },
-    { left: 0, top: 0, direction: 'right' },
-    { left: 100, top: 0, direction: 'right' },
-    { left: 0, top: 100, direction: 'right' },
-    { left: 100, top: 100, direction: 'right' },
+    { left: 100, top: 100, direction: 'right' }
   ]
 
   var trial_proc = {
     timeline: [fixation, trial],
     timeline_variables: params,
-    randomize_order: true
+    randomize_order: false
   }
 
   var done = {
     type: 'html-button-response',
     choices: ['CSV', 'JSON'],
+    button_html:'<button class="buttonish">%choice%</button>',
     stimulus: `<p>Done!</p><p>If you'd like to download a copy of the data to explore, click the format you'd like below</p>`,
     on_finish: function(data){
       if(data.response == 0){
@@ -167,11 +196,18 @@
       if(data.response == 1){
         jsPsych.data.get().localSave('json', 'webgazer-sample-data.json');
       }
+    //   if(jsPsych.pluginAPI.compareKeys(data.response, "0")){
+    //   data.correct = true;
+    // } else {
+    //   data.correct = false; 
+    // }
     }
   }
 
 
+
   var timeline = [];
+  
   timeline.push(camera_instructions);
   timeline.push(init_camera);
   timeline.push(calibration_instructions);
@@ -181,6 +217,7 @@
   timeline.push(task_instructions);
   timeline.push(trial_proc);
   timeline.push(done);
+
 
   jsPsych.init({
     timeline: timeline,
