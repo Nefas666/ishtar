@@ -175,19 +175,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 24rem) {
-  .show-xxsm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 30rem) {
   .hide-xsm {
     display: none;
-  }
-}
-@media only screen and (min-width: 30rem) {
-  .show-xsm {
-    display: block;
   }
 }
 @media only screen and (min-width: 48rem) {
@@ -195,19 +185,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 48rem) {
-  .show-sm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 64rem) {
   .hide-md {
     display: none;
-  }
-}
-@media only screen and (min-width: 64rem) {
-  .show-md {
-    display: block;
   }
 }
 @media only screen and (min-width: 75rem) {
@@ -215,29 +195,14 @@
     display: none;
   }
 }
-@media only screen and (min-width: 75rem) {
-  .show-lg {
-    display: block;
-  }
-}
 @media only screen and (min-width: 80rem) {
   .hide-xl {
     display: none;
   }
 }
-@media only screen and (min-width: 80rem) {
-  .show-xl {
-    display: block;
-  }
-}
 @media only screen and (min-width: 90rem) {
   .hide-xxl {
     display: none;
-  }
-}
-@media only screen and (min-width: 90rem) {
-  .show-xxl {
-    display: block;
   }
 }
 .container {
@@ -294,8 +259,8 @@ body .wrapper h1.t-how {
   text-align: center;
   color: #FCFAFC;
   font-weight: 900;
-  font-size: 10.38em;
-  line-height: 1.85em;
+  font-size: 8.38em;
+  line-height: 1.65em;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -373,6 +338,69 @@ body div.text-intro p.p-intro {
   width: 50%;
   justify-self: left;
   padding-left: 10%;
+}
+body div.title-phs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+body div.title-phs h2.t-phs {
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: left;
+  font-size: 4.75em;
+  text-transform: uppercase;
+  color: #FCFAFC;
+  font-weight: 900;
+  justify-self: left;
+  margin-top: 10%;
+}
+body section.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: stretch;
+  width: 75%;
+}
+body section.list span.s-p {
+  font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: left;
+  font-size: 4.75em;
+  text-transform: uppercase;
+  color: #FCFAFC;
+  font-weight: 900;
+}
+body section.list p.l-p {
+  font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: left;
+  color: #FCFAFC;
+  font-weight: 300;
+  font-size: 1.58em;
+  line-height: 1.85em;
+  letter-spacing: 0.15em;
+  padding-bottom: 10%;
+}
+body div.text-conc {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+body div.text-conc p.p-conc {
+  font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
+  text-align: left;
+  color: #FCFAFC;
+  font-weight: 300;
+  font-size: 1.58em;
+  line-height: 1.85em;
+  letter-spacing: 0.15em;
+  width: 70%;
+  justify-self: left;
+  padding-left: 10%;
+  padding-bottom: 5%;
 }
 
 /*# sourceMappingURL=how.css.map */

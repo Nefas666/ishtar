@@ -32,19 +32,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 24rem) {
-  .show-xxsm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 30rem) {
   .hide-xsm {
     display: none;
-  }
-}
-@media only screen and (min-width: 30rem) {
-  .show-xsm {
-    display: block;
   }
 }
 @media only screen and (min-width: 48rem) {
@@ -52,19 +42,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 48rem) {
-  .show-sm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 64rem) {
   .hide-md {
     display: none;
-  }
-}
-@media only screen and (min-width: 64rem) {
-  .show-md {
-    display: block;
   }
 }
 @media only screen and (min-width: 75rem) {
@@ -72,29 +52,14 @@
     display: none;
   }
 }
-@media only screen and (min-width: 75rem) {
-  .show-lg {
-    display: block;
-  }
-}
 @media only screen and (min-width: 80rem) {
   .hide-xl {
     display: none;
   }
 }
-@media only screen and (min-width: 80rem) {
-  .show-xl {
-    display: block;
-  }
-}
 @media only screen and (min-width: 90rem) {
   .hide-xxl {
     display: none;
-  }
-}
-@media only screen and (min-width: 90rem) {
-  .show-xxl {
-    display: block;
   }
 }
 * {
@@ -268,19 +233,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 24rem) {
-  .show-xxsm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 30rem) {
   .hide-xsm {
     display: none;
-  }
-}
-@media only screen and (min-width: 30rem) {
-  .show-xsm {
-    display: block;
   }
 }
 @media only screen and (min-width: 48rem) {
@@ -288,19 +243,9 @@
     display: none;
   }
 }
-@media only screen and (min-width: 48rem) {
-  .show-sm {
-    display: block;
-  }
-}
 @media only screen and (min-width: 64rem) {
   .hide-md {
     display: none;
-  }
-}
-@media only screen and (min-width: 64rem) {
-  .show-md {
-    display: block;
   }
 }
 @media only screen and (min-width: 75rem) {
@@ -308,29 +253,14 @@
     display: none;
   }
 }
-@media only screen and (min-width: 75rem) {
-  .show-lg {
-    display: block;
-  }
-}
 @media only screen and (min-width: 80rem) {
   .hide-xl {
     display: none;
   }
 }
-@media only screen and (min-width: 80rem) {
-  .show-xl {
-    display: block;
-  }
-}
 @media only screen and (min-width: 90rem) {
   .hide-xxl {
     display: none;
-  }
-}
-@media only screen and (min-width: 90rem) {
-  .show-xxl {
-    display: block;
   }
 }
 .container {

@@ -120,5 +120,48 @@ body {
         }
 
     }
+
+    div.title-phs{
+        @include row();
+        justify-content:left;
+        padding-top:5%;
+        padding-bottom:5%;
+
+        h2.t-phs{
+            @include h2-title-how();
+            justify-self:left;
+            margin-top:10%;
+        }
+    }
+
+    section.list{
+        @include row();
+        justify-content:left;
+        align-items: stretch;
+        width:75%;
+        span.s-p{
+            @include h2-title-how();
+
+        }
+        p.l-p{
+            @include body-copy-how2();
+            padding-bottom:10%;
+        }
+
+    }
+
+    div.text-conc{
+        @include row();
+        justify-content:left;
+
+        p.p-conc{
+            @include body-copy-how2();
+            width:70%;
+            justify-self:left;
+            padding-left:10%;
+            padding-bottom:5%;
+        }
+
+    }
 }
   

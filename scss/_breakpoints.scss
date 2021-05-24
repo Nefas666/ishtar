@@ -9,7 +9,7 @@ $breakpoints : (
 );
 
 @mixin breakpoint($breakpoint, $dir : min) {
-    // la variabile min/max serve per gestire l'apertura del menu mobile
+
     @if is-absolute-length($breakpoint) {
         @media only screen and (#{$dir}-width: $breakpoint) {
             @content;
@@ -29,12 +29,6 @@ $breakpoints : (
     @include breakpoint($break) {
         .hide-#{$slug} {
             display: none;
-        }
-    }
-
-    @include breakpoint($break) {
-        .show-#{$slug} {
-            display: block;
         }
     }
 }
