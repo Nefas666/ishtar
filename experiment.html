@@ -1,242 +1,282 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   
-    <!-- <link href="css/experiment copy.css" rel="stylesheet" type="text/css">
-    <link href="css/experiment copy.css.map" rel="stylesheet" type="text/css"> -->
-    <script src="js/jsPsych/jspsych.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-html-button-response.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-video-button-response.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-preload.js"></script>
-    <script src="js/jsPsych/extensions/jspsych-ext-webgazer.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-webgazer-init-camera.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-webgazer-calibrate.js"></script>
-    <script src="js/jsPsych/plugins/jspsych-webgazer-validate.js"></script>
-    <script src="js/webgazer.js"></script>
-    
-    <link href="css/experiment.css" rel="stylesheet" type="text/css">
-    <link href="css/master.css" rel="stylesheet" type="text/css">
-    <link href="js/jsPsych/css/jspsych.css" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-    <style>
-
-    </style>
-
+  <script src="js/jsPsych/jspsych.js"></script>
+  <script src="js/jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="js/jsPsych/plugins/jspsych-html-button-response.js"></script>
+  <script src="js/jsPsych/plugins/jspsych-webgazer-init-camera.js"></script>
+  <script src="js/jsPsych/plugins/jspsych-webgazer-calibrate.js"></script>
+  <script src="js/jsPsych/plugins/jspsych-webgazer-validate.js"></script>
+  <script src="js/webgazer.js"></script>
+  <script src="js/precision_calculation.js"></script>
+  <script src="js/jsPsych/extensions/jspsych-ext-webgazer.js"></script>
+  <link href="css/experiment.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="js/jsPsych/css/jspsych.css">
+  <style>
+    .jspsych-content { max-width: 100%;}
+  </style>
 </head>
-<body>
-    <!-- <div class="wrapper" id="wrapper">
-         <canvas id="plotting_canvas" width="" height="" style="cursor: pointer; position: fixed;"> </canvas>  
-        <button class="start" id="start"><a href="#">start the experiment </a></button>
-          <div class="card" id="card">
-            <div class="b">
-              <p>Calibration</p>
-                <p>Remember to grant you camera access to the browser to proceed to the experiment!</p>
-            </div>
-              <div class="button">
-                  <button>Send</button>
-                      <button class="cancel-btn">Cancel</button>
-                  </div>
-                      <button onclick="closeModal()" class="close">
-                          &#x2716;
-                      </button>
-              </div>
-                <section class="vidbox">
-                  <video id="vid1" controls width="768">
-                  <source src="violence.mp4" type="video/mp4">
-                  </video>
 
-                  <video id="vid2" controls width="768">
-                    <source src="sex.mp4" type="video/mp4">
-                  </video>
-                </section>
-    </div> -->
+<body></body>
 
- <!-- <script>
-        function openModal(){
-    const open = document.getElementById("card");
-    open.style.display="flex";
-    open.style.width="300px";
-  };
-  
-  //close the box modal
-  function closeModal(){
-    const close = document.getElementById("card");
-    close.style.display="none";
-  };
-    </script> -->
-
-</body>
 <script>
-  var timeline=[];
-  var preload = {
-      type: 'preload',
-      video: [
-      'vid/sex.mp4',
-    'vid/sex_2.mp4',
-    'vid/sex_3.mp4',
-    'vid/sex_4.mp4',
-   'vid/violence.mp4',
-    'vid/violence_2.mp4',
-    'vid/violence_3.mp4',
-    'vid/violence_4.mp4'
-]
-    }
-    timeline.push(preload);
 
-  var welcome = {
-  type: 'html-button-response',
-  stimulus: `<p>Welcome to Ishtar, the neurobiological experience. Press any button to begin.</p>
-      <p>This experiment uses your camera for eye tracking.</p>
-      <p>In order to participate you must allow the experiment to use your camera.</p>
-      <p>You will be prompted to do this on the next screen.</p>
-      <p>If you do not want to permit the experiment to use your camera, please close the page.</p>
+// var test_stimuli =[{stimulus:'vid/sex.mp4'},{stimulus:'vid/violence.mp4'}];
+// var n_loaded = 0;
+
+//     jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
+
+//     function updateLoadedCount(file){
+//       n_loaded++;
+//         var percentcomplete = n_loaded / test_stimuli.length * 100;
+
+//         // could put something fancier here, like a progress bar
+//         // or updating text in the DOM.
+//         console.log('Loaded '+percentcomplete+'% of videos');
+//     }
+
+//     function startExperiment(){
+//       jsPsych.init({
+//         timeline: exp
+//       })
+//     };
+
+  var camera_instructions = {
+    type: 'html-button-response',
+    stimulus: `
+      <p style="font-size:1.87em;">This experiment uses your camera for eye tracking.</p><br /><br />
+      <p style="font-size:1.17em; line-height:2em;">In order to participate you must allow the experiment to use your camera.</p>
+      <p style="font-size:1.17em;line-height:2em;">You will be prompted to do this on the next screen.</p>
+      <p style="font-size:1.17em;line-height:2em;">If you do not want to permit the experiment to use your camera, please close the page.</p>
+    `,
+    choices: ['CLICK TO BEGIN'],
+    button_html:'<button class="buttonish">%choice%</button>',
+    post_trial_gap: 1000
+  }
+
+  var init_camera = {
+    type: 'webgazer-init-camera',
+    css_classes:['wegazer-init-container', 'h', 'buttonish']
+    
+  }
+
+  var calibration_instructions = {
+    type: 'html-button-response',
+    stimulus: `
+      <p style="font-size:1.87em;>Great! Now the eye tracker will be calibrated to translate<br/> the image of your eyes from the webcam to a location on your screen.</p><br /><br />
+      <p style="font-size:1.07em;line-height:2em;"">To do this, you need to click a series of dots.</p>
+      <p style="font-size:1.07em;line-height:2em;"">Keep your head still, and click on each dot as it appears. Look at the dot as you click it.</p>
     `,
     choices: ['Click to begin'],
     button_html:'<button class="buttonish">%choice%</button>',
     post_trial_gap: 1000
-  };
-  timeline.push(welcome);
-
-  // var init_camera_trial = {
-  // type: "webgazer-init-camera"
-
-  // };
-
-  // timeline.push(init_camera_trial);
-
-    var instructions = {
-      type: "html-button-response",
-      stimulus: `
-        <p>In this experiment you'll see appearing two different types of content: <br />
-          on the right, a <strong>violent</strong> one and on the left an <strong>erotic</strong> content.</p>
-        <p>These content will appear randomly selected from a group of 35 videos for each category</p>
-        <div class='container' style='width: 100%;'>
-          <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
-            <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
-            <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
-          </div>
-          <p>Click on the button to access the calibration test</p>
-        </div>
-      `,
-      choices: ['Proceed'],
-      button_html:'<button class="buttonish">%choice%</button>',
-      post_trial_gap: 1000
-    };
-    timeline.push(instructions);
-
-  
-
-    // var test_stimuli =['vid/sex.mp4','vid/violence.mp4'];
-    // var n_loaded = 0;
-
-    // jsPsych.pluginAPI.preloadVideo(test_stimuli, function(){ startExperiment(); }, function(file) { updateLoadedCount(file); });
-
-    // function updateLoadedCount(file){
-    //   n_loaded++;
-    //     var percentcomplete = n_loaded / test_stimuli.length * 100;
-
-    //     // could put something fancier here, like a progress bar
-    //     // or updating text in the DOM.
-    //     console.log('Loaded '+percentcomplete+'% of videos');
-    // }
-
-    // function startExperiment(){
-    //   jsPsych.init({
-    //     timeline: exp
-    //   })
-    // };
-
-    var test_violent =[
-    {video:'vid/violence.mp4'},
-    {video:'vid/violence_2.mp4'},
-    {video:'vid/violence_3.mp4'},
-    {video:'vid/violence_4.mp4'}
-  ]
-
-
-  var test_sex =[
-    {video:'vid/sex.mp4'},
-    {video:'vid/sex_2.mp4'},
-    {video:'vid/sex_3.mp4'},
-    {video:'vid/sex_4.mp4'}
-  ]
-
-
-    var test = {
-      type: 'video-button-response',
-      stimulus:['vid/sex.mp4','vid/violence_4.mp4'],
-        width:400,
-        height:200,
-        autoplay:true,
-        controls:true,
-      choices:['true','false'],
-  
-      data:{
-        task:'response',
-        left_response:jsPsych.timelineVariable('true')
-      }
-      // trial_ends_after_video:true,
-      // on_finish: function(data){
-      //   data.valid = jsPsych.pluginAPI.compareKeys(data.response, data.left_response);
-      // }
-    }
-  
-
-    var test_procedure = {
-          timeline: test,
-          timeline_variables: test_violent,test_sex,
-          repetitions:4,
-          randomize_order: true
-    };
-
-    timeline.push(test_procedure);
-
-    var debrief_block = {
-    type: "html-keyboard-response",
-    stimulus: function() {
-
-        var exit = jsPsych.data.get().filter({task: 'response'});
-        var v_exit = exit.filter({valid: true});
-        var accuracy = Math.round(v_exit.count() / exit.count() * 100);
-        var rt = Math.round(v_exit.select('rt').mean());
-
-        return `<p>You responded correctly on ${accuracy}% of the trials.</p>
-          <p>Your average response time was ${rt}ms.</p>
-          <p>Press any key to complete the experiment. Thank you!</p>`;
-
-      }
-    };
-
-timeline.push(debrief_block);
-
-
-// var test_procedure = {
-//     timeline: [calibration, validation, test],
-//     on_timeline_start: function() {
-//         alert('The trial procedure just started.')
-//     },
-//     on_timeline_finish: function() {
-//         alert('The trial procedure just finished.')
-//     }
-// }
-
-/* start the experiment */
-jsPsych.init({
-  timeline: timeline,
-  extensions: [
-    {
-      type: 'webgazer',
-      params: {
-        auto_initialize:false,
-        round_predictions:true,
-      }
   }
-  ],
-  on_finish: function() {
-        jsPsych.data.displayData();
+
+  var calibration = {
+    type: 'webgazer-calibrate',
+    calibration_points: [[50,50], [25,25], [25,75], [75,25], [75,75]],
+    //calibration_points: [[10,10],[10,30],[10,50],[10,70],[10,90],[30,10],[30,30],[30,50],[30,70],[30,90],[50,10],[50,30],[50,50],[50,70],[50,90],[70,10],[70,30],[70,50],[70,70],[70,90],[90,10],[90,30],[90,50],[90,70],[90,90]],
+    // calibration_points: [
+    //   [10,10],[10,50],[10,90],
+    //   [30,10],[30,50],[30,90],
+    //   [40,10],[40,30],[40,40],[40,45],[40,50],[40,55],[40,60],[40,70],[40,90],
+    //   [50,10],[50,30],[50,40],[50,45],[50,50],[50,55],[50,60],[50,70],[50,90],
+    //   [60,10],[60,30],[60,40],[60,45],[60,50],[60,55],[60,60],[60,70],[60,90],
+    //   [70,10],[70,50],[70,90],
+    //   [90,10],[90,50],[90,90]],
+    repetitions_per_point: 3,
+    randomize_calibration_order: true,
+  }
+
+  var validation_instructions = {
+    type: 'html-button-response',
+    stimulus: `
+      <p style="font-size:1.87em;">Let's see how accurate the eye tracking is. </p><br /><br/>
+      <p style="font-size:1.07em;line-height:2em;">Keep your head still, and move your eyes to focus on each dot as it appears.</p>
+      <p style="font-size:1.07em;line-height:2em;">You do not need to click on the dots. Just move your eyes to look at the dots.</p>
+    `,
+    choices: ['CLICK TO BEGIN'],
+    button_html:'<button class="buttonish">%choice%</button>',
+    post_trial_gap: 1000
+  }
+
+  var validation = {
+    type: 'webgazer-validate',
+    validation_points: [[25,25], [25,75], [75,25], [75,75]],
+    show_validation_data: true,
+    randomize_calibration_order: true
+  }
+
+  var task_instructions = {
+    type: "html-button-response",
+    stimulus: `
+      <p style="font-size:1.87em;">In this experiment you'll see appearing two different types of content: <br />
+        on the right, a <strong>violent</strong> one and on the left an <strong>erotic</strong> content.</p>
+      <p style="font-size:1.07em;line-height:2em;">These content will appear randomly selected from a group of 35 videos for each category</p>
+      <div class='container' style='width: 100%;'>
+        <div class='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
+          <video controls autoplay src='vid/sex.mp4' style='justify-self:flex-start;'></video>
+          <video controls autoplay src='vid/violence.mp4' style='justify-self:flex-end;'></video>
+        </div>
+        <p style="font-size:1.07em;line-height:2em;">Click on the button to access the experiment</p>
+      </div>
+    `,
+    choices: ['GO TO THE EXPERIMENT'],
+    button_html:'<button class="buttonish"><a href="the-experiment.html">%choice%</a></button>',
+    post_trial_gap: 1000
+  }
+
+  var fixation = {
+    type: 'html-keyboard-response',
+    stimulus: '<p style="font-size:1.87em;">+</p>',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 500    
+  }
+
+  var timeline_variables =[
+    {video:'vid/sex.mp4', left:['true']},
+    {video:'vid/sex_2.mp4', left:['true']},
+    {video:'vid/sex_3.mp4', left:['true']},
+    {video:'vid/sex_4.mp4', left:['true']},
+    {video:'vid/violence.mp4', right:['true']},
+    {video:'vid/violence_2.mp4', right:['true']},
+    {video:'vid/violence_3.mp4', right:['true']},
+    {video:'vid/violence_4.mp4', right:['true']}
+  ]
+
+  var video_trial = {
+    type: 'html-keyboard-response',
+    stimulus: function () {
+      return(
+      `
+        <div id='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
+          <video controls autoplay src='vid/sex_2.mp4' style='justify-self:flex-start;width:600px;'></video>
+          <video controls autoplay src='vid/violence_4.mp4' style='justify-self:flex-end;width:600px;'></video> 
+        </div>
+    `
+      )
+    },
+    prompt:' <p style="font-size:1.87em;">Press any key to change sequence <br />',
+    data: {
+      video: jsPsych.timelineVariable('video')
+    },
+    extensions: [
+      {type: 'webgazer', params: {targets: ['#vidSection']}}
+    ]
+  }
+
+  var video_trial_2 = {
+    type: 'html-keyboard-response',
+    stimulus: function () {
+      return(
+      `
+        <div id='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
+          <video controls autoplay src='vid/sex_3.mp4' style='justify-self:flex-start;width:600px;'></video>
+          <video controls autoplay src='vid/violence_3.mp4' style='justify-self:flex-end;width:600px;'></video>
+        </div>
+    `
+      )
+    },
+    prompt:' <p style="font-size:1.87em;">Press any key to change sequence <br />',
+    data: {
+      video: jsPsych.timelineVariable('video')
+    },
+    extensions: [
+      {type: 'webgazer', params: {targets: ['#vidSection']}}
+    ]
+  }
+
+  var video_trial_3 = {
+    type: 'video-keyboard-response',
+    stimulus: function () {
+      return(
+      `
+        <div id='vidSection' style='display:flex;flex-direction:row;justify-content:space-between;'>
+          <video controls autoplay src='vid/sex_4.mp4' style='justify-self:flex-start;width:600px;'></video>
+          <video controls autoplay src='vid/violence_2.mp4' style='justify-self:flex-end; width:600px;'></video>
+        </div>
+    `
+      )
+    },
+    data: {
+      video: jsPsych.timelineVariable('video')
+    },
+    prompt:' <p style="font-size:1.87em;">Press any key to change sequence <br />',
+    extensions: [
+      {type: 'webgazer', params: {targets: ['#vidSection']}}
+    ]
+  }
+
+  var trial_procedure = {
+    timeline: [fixation,video_trial,video_trial_2,video_trial_3],
+    timeline_variables: timeline_variables,
+    randomize_order: true,
+    repetitions:0,
+  }
+
+  var trial_done = {
+    type: 'html-button-response',
+    choices: ['CSV', 'JSON'],
+    button_html:'<button class="buttonish">%choice%</button>',
+    stimulus:`
+      <p style="font-size:1.87em;">Done!If you'd like to download a copy of the data to explore, click the format you'd like below</p> <br />
+      <p style="font-size:1.07em;line-height:2em;">Or view your with some UI in it</p>
+      <button class="buttonish"><a href="the-report.html">VIEW YOUR REPORT</a></button>
+    `,
+    on_finish: function(data){
+      if(data.response == 0){
+        jsPsych.data.get().localSave('csv','webgazer-sample-data.csv');
       }
-});
+      if(data.response == 1){
+        jsPsych.data.get().localSave('json', 'webgazer-sample-data.json');
+      }
+    //   if(jsPsych.pluginAPI.compareKeys(data.response, "0")){
+    //   data.correct = true;
+    // } else {
+    //   data.correct = false; 
+    // }
+    }
+  }
+
+
+
+  var timeline = [];
+  
+  timeline.push(camera_instructions);
+  timeline.push(init_camera);
+  timeline.push(calibration_instructions);
+  timeline.push(calibration);
+  timeline.push(validation_instructions);
+  timeline.push(validation);
+  timeline.push(task_instructions);
+  timeline.push(trial_procedure);
+  timeline.push(trial_done);
+
+
+  jsPsych.init({
+    timeline: timeline,
+    preload_video:[
+    'vid/sex.mp4',
+    'vid/sex_2.mp4',
+    'vid/sex_3.mp4',
+    'vid/sex_4.mp4',
+   'vid/violence.mp4',
+    'vid/violence_2.mp4' ,
+    'vid/violence_3.mp4',
+    'vid/violence_4.mp4'
+
+    ],
+    extensions: [
+      {type: 'webgazer'}
+    ]
+  })
 </script>
 
 </html>

@@ -764,24 +764,24 @@ body .modal-dialogue .modal-content button#closeBtn {
   font-weight: bold;
   margin-right: 1rem;
 }
-body section.vidbox {
-  margin-top: 200px;
+body .vidbox {
+  margin-top: 10%;
   display: flex;
   flex-direction: row;
-  align-content: space-between;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
 }
-body section.vidbox video#vid1 {
+body .vidbox video#vid1 {
   width: 680px;
   height: 450px;
   margin-right: 50px;
   z-index: 1;
-  justify-self: flex-end;
 }
-body section.vidbox video#vid2 {
+body .vidbox video#vid2 {
   width: 680px;
   height: 450px;
   z-index: 1;
-  justify-self: flex-start;
 }
 
 .close {

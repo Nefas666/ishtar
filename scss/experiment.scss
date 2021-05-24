@@ -241,19 +241,21 @@ li {
 
 }
 
-section.vidbox {
+.vidbox {
 
-    margin-top:200px;
+    margin-top:10%;
     display:flex;
     flex-direction:row;
-    align-content: space-between;
+    align-content:center;
+    justify-content:center;
+    width:100%;
 
         & video#vid1 {
         width:680px;
         height:450px;
         margin-right:50px;
         z-index:1;
-        justify-self:flex-end;
+       
 
         }
 
@@ -263,7 +265,6 @@ section.vidbox {
         height:450px;
         
         z-index:1;
-        justify-self:flex-start;
     
         }
 
