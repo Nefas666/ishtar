@@ -446,6 +446,10 @@
   flex-direction: column;
 }
 
+body {
+  cursor: none;
+}
+
 #wrapper {
   display: flex;
   justify-content: space-between;
@@ -525,6 +529,22 @@
   font-weight: 400;
   text-decoration: underline;
   text-decoration-color: #810303bb;
+}
+
+.cursor {
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #f44336;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.cursor__follower {
+  transition: transform 0.4s;
+  width: 6px;
+  height: 6px;
 }
 
 * {

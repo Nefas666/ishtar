@@ -251,10 +251,18 @@ body .wrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
-body .wrapper h1.t-how {
+body .wrapper div.title-how {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5%;
+}
+body .wrapper div.title-how h1.t-how {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: center;
   color: #FCFAFC;
@@ -264,7 +272,7 @@ body .wrapper h1.t-how {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-body a.switch {
+body .wrapper a.switch {
   font-size: 13px;
   font-weight: 400;
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
@@ -274,16 +282,16 @@ body a.switch {
   padding: 5%;
   box-sizing: border-box;
 }
-body a.switch:hover {
+body .wrapper a.switch:hover {
   color: #E90003;
 }
-body div.text-how {
+body .wrapper div.text-how {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-body div.text-how p.p-how {
+body .wrapper div.text-how p.p-how {
   font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   color: #FCFAFC;
@@ -295,7 +303,7 @@ body div.text-how p.p-how {
   padding: 5%;
   width: 45%;
 }
-body div.text-how img.i-how {
+body .wrapper div.text-how img.i-how {
   align-self: right;
   width: 20%;
   height: 20%;
@@ -304,11 +312,11 @@ body div.text-how img.i-how {
   overflow: hidden;
   margin-top: 5%;
 }
-body div.text-how img.i-how:hover {
+body .wrapper div.text-how img.i-how:hover {
   transform: rotate(360deg);
   overflow: hidden;
 }
-body div.text-how img.i-how-2 {
+body .wrapper div.text-how img.i-how-2 {
   align-self: right;
   width: 15%;
   height: 15%;
@@ -317,17 +325,17 @@ body div.text-how img.i-how-2 {
   transform: rotate(180deg);
   overflow: hidden;
 }
-body div.text-how img.i-how-2:hover {
+body .wrapper div.text-how img.i-how-2:hover {
   transform: rotate(-45deg);
   overflow: hidden;
 }
-body div.text-intro {
+body .wrapper div.text-intro {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   justify-content: left;
 }
-body div.text-intro p.p-intro {
+body .wrapper div.text-intro p.p-intro {
   font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   color: #FCFAFC;
@@ -339,7 +347,7 @@ body div.text-intro p.p-intro {
   justify-self: left;
   padding-left: 10%;
 }
-body div.title-phs {
+body .wrapper div.title-phs {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -347,7 +355,7 @@ body div.title-phs {
   padding-top: 5%;
   padding-bottom: 5%;
 }
-body div.title-phs h2.t-phs {
+body .wrapper div.title-phs h2.t-phs {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   font-size: 4.75em;
@@ -357,7 +365,7 @@ body div.title-phs h2.t-phs {
   justify-self: left;
   margin-top: 10%;
 }
-body section.list {
+body .wrapper section.list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -365,7 +373,7 @@ body section.list {
   align-items: stretch;
   width: 75%;
 }
-body section.list span.s-p {
+body .wrapper section.list span.s-p {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   font-size: 4.75em;
@@ -373,7 +381,7 @@ body section.list span.s-p {
   color: #FCFAFC;
   font-weight: 900;
 }
-body section.list p.l-p {
+body .wrapper section.list p.l-p {
   font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   color: #FCFAFC;
@@ -383,13 +391,13 @@ body section.list p.l-p {
   letter-spacing: 0.15em;
   padding-bottom: 10%;
 }
-body div.text-conc {
+body .wrapper div.text-conc {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   justify-content: left;
 }
-body div.text-conc p.p-conc {
+body .wrapper div.text-conc p.p-conc {
   font-family: "Roboto", "Arial", Helvetica, Geneva, sans-serif;
   text-align: left;
   color: #FCFAFC;

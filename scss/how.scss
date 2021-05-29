@@ -39,20 +39,22 @@ body {
 	}
 }
 
-    
-
-
     .wrapper {
     
     @include row();
-    justify-content:space-between;
+    justify-content:center;
     align-items: center;
- 
 
-    
-    h1.t-how{
+    div.title-how{
+
+        @include row();
+        justify-content:center;
+        align-items: center;
+        margin:2.5%;
+
+        h1.t-how{
         @include h1-title-learn();
-    }
+        }
     }
     a.switch {
         font-size: 13px;
@@ -163,5 +165,7 @@ body {
         }
 
     }
+}
+
 }
   

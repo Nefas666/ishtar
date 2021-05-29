@@ -277,6 +277,10 @@
   flex-direction: column;
 }
 
+body {
+  cursor: none;
+}
+
 #wrapper {
   display: flex;
   justify-content: space-between;
@@ -358,9 +362,27 @@
   text-decoration-color: #810303bb;
 }
 
+.cursor {
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #f44336;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.cursor__follower {
+  transition: transform 0.4s;
+  width: 6px;
+  height: 6px;
+}
+
+html,
 body {
   width: 100vw;
   height: 100vh;
+  cursor: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -370,6 +392,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+html .ish,
 body .ish {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   font-size: 12.25em;
@@ -377,6 +400,7 @@ body .ish {
   color: #FCFAFC;
   font-weight: 900;
 }
+html a,
 body a {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: center;
@@ -387,26 +411,31 @@ body a {
   letter-spacing: 0.15em;
   display: block;
 }
+html a:hover,
 body a:hover {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   font-weight: 400;
   text-decoration: underline;
   text-decoration-color: #810303bb;
 }
+html .glitch,
 body .glitch {
   position: relative;
 }
+html .layers,
 body .layers {
   position: absolute;
   top: 0px;
   left: 0px;
   opacity: 0.5;
 }
+html .display,
 body .display {
   position: absolute;
   top: 0px;
   left: 0px;
 }
+html .mini-wrap,
 body .mini-wrap {
   display: flex;
   width: 50%;
@@ -414,6 +443,7 @@ body .mini-wrap {
   padding: 2% 4% 4%;
   box-sizing: border-box;
 }
+html .mini-wrap p.sub,
 body .mini-wrap p.sub {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   text-align: center;
@@ -424,10 +454,12 @@ body .mini-wrap p.sub {
   font-size: 1.75em;
   text-align: left;
 }
+html .mini-wrap div.line,
 body .mini-wrap div.line {
   border-bottom: 20px solid #810303bb;
   width: 100%;
 }
+html div.countdown,
 body div.countdown {
   display: flex;
   justify-content: center;
@@ -437,6 +469,7 @@ body div.countdown {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+html div.countdown .day,
 body div.countdown .day {
   display: flex;
   justify-content: space-between;
@@ -472,6 +505,22 @@ button.open:active {
   top: -0.5px;
   box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, 0.12);
   border: none;
+}
+
+.cursor {
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #f44336;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.cursor__follower {
+  transition: transform 0.4s;
+  width: 6px;
+  height: 6px;
 }
 
 /*# sourceMappingURL=home.css.map */

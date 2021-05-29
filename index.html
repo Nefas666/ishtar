@@ -16,28 +16,30 @@
     <link rel="stylesheet" href="scss/home.scss" alt=""> 
     <link rel="stylesheet" href="css/home.css" alt=""> 
     <link rel="stylesheet" href="css/home.css.map" alt=""> 
-    <link rel="stylesheet" href="js/CrosshairDistortion/src/css/base.css">
-   <script src="js/CrosshairDistortion/src/js/cursor.js"></script>
-   <script src="js/CrosshairDistortion/src/js/index.js"></script>
-   <script src="js/CrosshairDistortion/src/js/menuItem.js"></script>
-   <script src="js/CrosshairDistortion/src/js/utils.js"></script>
+    <script src="js/cursor.js"></script>
+
  
     
     <title>Ishtar</title>
 </head>
 <body>
+
+ 
+  
   <!-- <h1 class="_ish">Ishtar</h1> -->
-  <h1 class="ish glitch">Ishtar</h1>
+  <h1 class="ish glitch menu__item-title">Ishtar</h1>
     <div class="mini-wrap">
      
-
+ 
       <div class="line">
-        <p class="sub">a neurobiological web experience</p>
+        <p class="sub menu__item-sub">a neurobiological web experience</p>
       </div>
+   
     </div>
   
   <button class="open" id="open" onclick="alertCookie()"><a href="before.html">BEGIN THE EXPERIMENT</a></button>
-
+  <div class="cursor-dot-outline"></div>
+  <div class="cursor-dot"></div>
 
   <script>
       function openModal(){
@@ -56,6 +58,8 @@ function closeModal(){
 
     document.cookie = "ishtar_init=started";
     </script>
-    
+   
+
+   
 </body>
 </html>
