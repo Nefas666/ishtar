@@ -32,12 +32,19 @@
   },
   "bundleDependencies": false,
   "dependencies": {
+    "client": "0.0.1",
     "cloudinary-core": "^2.10.2",
     "core-js": "3.6.5",
     "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "loader.js": "^4.7.0",
     "lodash": "^4.17.11",
+    "mssql": "^7.2.1",
     "mysql": "^2.18.1",
-    "q": "^1.5.1"
+    "net": "^1.0.2",
+    "q": "^1.5.1",
+    "tedious": "^12.0.0",
+    "url": "^0.11.0"
   },
   "deprecated": false,
   "description": "Cloudinary NPM for node.js integration",
