@@ -36,6 +36,7 @@
     "cloudinary-core": "^2.10.2",
     "core-js": "3.6.5",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "loader.js": "^4.7.0",
     "lodash": "^4.17.11",
