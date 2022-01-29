@@ -26,7 +26,23 @@
   </style>
 </head>
 
-<body></body>
+<body>
+<script>
+
+function setCookie(name, value, expires, path, domain, secure) 
+{
+    document.cookie= name + "=" + decodeURIComponent(value) +
+        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
+    //By default, getTimezoneOffset returns the time zone offset in minutes
+setCookie("ishtarInitiate", JSON.stringify(new Date()));
+
+
+    </script>
+</body>
 
 <script>
 

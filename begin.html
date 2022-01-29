@@ -51,7 +51,7 @@
                   </div>
 
                   <div class="col-sm-6 form">
-                        <form class="signup-form" action="the-experiment" method="post">
+                        <form class="signup-form" action="the-experiment" id="form" method="post">
          
                            <div class="form-group">
                               <label for="name">age</label>
@@ -61,7 +61,7 @@
          
                            <div class="form-group">
                               <label for="gender">gender</label>
-                              <input type="text" name="gender" id="dender" class="gender">
+                              <input type="text" name="gender" id="gender" class="gender">
                               <span class="error"></span>
                            </div>
          
@@ -70,7 +70,7 @@
                               <input type="text" name="sex" id="sex">
                            </div>
          
-                           <div class="form-group">
+                           <!--<div class="form-group">
                               <label for="edu">education</label>
                               <input type="text" name="edu" id="edu" class="edu">
                               <span class="error"></span>
@@ -80,11 +80,11 @@
                               <label for="passwordCon">job</label>
                               <input type="text" name="job" id="job" class="job">
                               <span class="error"></span>
-                           </div>
+                           </div>-->
          
                            <div class="CTA">
                              
-                              <a href="experiment.html">
+                              <a href="experiment.html" onclick="storeValues(form)">
                                  <input type="button" value="begin the experiment" id="submit">
                               </a>
                               <a href="index.html" class="switch">Go Back to Home</a>
@@ -97,7 +97,24 @@
     </div>
 
     <script src="js/menu.js"></script>
+<script>
 
+function setCookie(name, value, expires, path, domain, secure) 
+{
+    document.cookie= name + "=" + decodeURIComponent(value) +
+        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
+function storeValues(form)  
+  {
+    setCookie("age", form.age.value);
+    setCookie("gender", form.gender.value);
+    setCookie("sex", form.sex.value);
+    return true;
+  }
+</script>
     <script>
         function openModal(){
     const open = document.getElementById("card");

@@ -1,3 +1,6 @@
+
+saveData();
+
 function saveData() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', './php/db_PDO.php'); // change 'write_data.php' to point to php script.
@@ -6,6 +9,9 @@ function saveData() {
       if(xhr.status == 200){
         var response = JSON.parse(xhr.responseText);
         console.log(response.success);
+      }
+      if (xhr.status==400){
+        console.error('nope');
       }
     };
     xhr.send(jsPsych.data.get().json());
