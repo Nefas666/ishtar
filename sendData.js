@@ -16,17 +16,20 @@ app.post('/register', function(req, res) {
     const age = form.age.value;
     const gender = form.gender.value;
     const sex = form.sex.value;
+    var x;
+    var y;
 
     const data = {
         sex,
         gender,
-        age
+        age,
+        x,
+        y
     };
 
-    connection.query('INSERT INTO UserData (UserSexID, UserGender, UserAge) SET ?', data, function(error, results, fields) {
+    connection.query('INSERT INTO UserData (UserSexID, UserGender, UserAge, UserX, UserY) SET ?', data, function(error, results, fields) {
         if (error) throw error;
         res.send('table filled with 3 new entries')
     });
-
 
 });

@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="css/begin.css.map" alt=""> 
     <link rel="stylesheet" href="css/begin.css" alt=""> 
     <script src="js/cursor.js"></script>
-    <script src="sendData.js"></script>
-
-
+    <script src="cookies.js"></script>
     <title>Begin the Experiment-Data Policy</title>
 </head>
 <body>
@@ -53,7 +51,7 @@
                   </div>
 
                   <div class="col-sm-6 form">
-                        <form class="signup-form" action="/register" id="form" method="POST">
+                        <form class="signup-form" action="/" id="form" method="POST">
          
                            <div class="form-group">
                               <label for="name">age</label>
@@ -99,24 +97,7 @@
     </div>
 
     <script src="js/menu.js"></script>
-<script>
 
-function setCookie(name, value, expires, path, domain, secure) 
-{
-    document.cookie= name + "=" + decodeURIComponent(value) +
-        ((expires) ? "; expires=" + expires.toGMTString() : "") +
-        ((path) ? "; path=" + path : "") +
-        ((domain) ? "; domain=" + domain : "") +
-        ((secure) ? "; secure" : "");
-}
-function storeValues(form)  
-  {
-    setCookie("age", form.age.value);
-    setCookie("gender", form.gender.value);
-    setCookie("sex", form.sex.value);
-    return true;
-  }
-</script>
     <script>
         function openModal(){
     const open = document.getElementById("card");
