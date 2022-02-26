@@ -6,10 +6,10 @@ function setCookie(name, value, expires, path, domain, secure) {
         ((secure) ? "; secure" : "");
 }
 
-function storeValues(form) {
+function userData() {
     const age = setCookie("age", form.age.value);
     const gender = setCookie("gender", form.gender.value);
     const sex = setCookie("sex", form.sex.value);
     return true;
 }
-module.exports = storeValues;
+module.exports = userData;
