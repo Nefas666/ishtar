@@ -1,7 +1,8 @@
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
-const userData = require('../../cookies');
+//const storeValues = require('../../cookies');
+
 
 
 async function getMultiple(page = 1) {
@@ -25,7 +26,7 @@ async function create(userData) {
         `INSERT INTO UserData 
       (UserSexID, UserGender, UserAge, UserX, UserY) 
       VALUES 
-      ( ${userData.sex}, ${userData.gender}, ${userData.age}, ${userData.x}, ${userData.y})`
+      ( ${userData.sex}, ${userData.age}, ${userData.gender}, ${userData.x}, ${userData.y})`
     );
 
     let message = 'Error in creating user data';

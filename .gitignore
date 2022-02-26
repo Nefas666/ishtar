@@ -3,3 +3,7 @@ WebGazer
 .env
 vid
 Geomanist
+userdata-api
+userdata-api/node_modules
+userdata-api/config.js
+php
