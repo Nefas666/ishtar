@@ -1,105 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="scss/home.scss" alt=""> 
-    <link rel="stylesheet" href="scss/home.css" alt=""> 
-    <link rel="stylesheet" href="scss/home.css.map" alt=""> 
-    <link rel="stylesheet" href="scss/begin.scss" alt=""> 
-    <link rel="stylesheet" href="css/begin.css.map" alt=""> 
-    <link rel="stylesheet" href="css/begin.css" alt=""> 
+    <link rel="stylesheet" href="scss/home.scss" alt="">
+    <link rel="stylesheet" href="scss/home.css" alt="">
+    <link rel="stylesheet" href="scss/home.css.map" alt="">
+    <link rel="stylesheet" href="scss/begin.scss" alt="">
+    <link rel="stylesheet" href="css/begin.css.map" alt="">
+    <link rel="stylesheet" href="css/begin.css" alt="">
     <script src="js/cursor.js"></script>
     <script src="cookies.js"></script>
-    <script src="cookieStorage.js"></script>
+
     <title>Begin the Experiment-Data Policy</title>
 </head>
+
 <body>
-<script src="sendData.js"></script>
-   <div class="wrapper" id="wrapper">
 
-      <div class="top-bar">
-         <button class="top-bar__nav-toggle hamburger"  id="top-nav-toggle">
-           <span></span>
-           <span></span>
-           <span></span>
+    <div class="wrapper" id="wrapper">
+
+        <div class="top-bar">
+            <button class="top-bar__nav-toggle hamburger" id="top-nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
          </button>
-         <span> <a href="index.html" class="top-bar__brand">Ishtar</a></span>  
-           <span><a href="learn-more.html" class="top-bar__contact">
-             learn more</a></span>
-     
-         <nav class="top-bar__nav collapsed" id="top-bar__nav">
-           <ul class="top-bar__nav-list ">
-             <li><a href="learn-more.html">Learn More</a></li>
-             <li><a href="the-experiment.html">The Experiment</a></li>
-             <li><a href="who-behind.html">Who's Behind</a></li>
-             <li><a href="how-it-works.html">How It Works</a></li>
-           </ul>
-         </nav>
-     </div>
-   </div>
-  <div class="container">
-                  <div class="col-sm-6 brand">
+            <span> <a href="index.html" class="top-bar__brand">Ishtar</a></span>
+            <span><a href="learn-more.html" class="top-bar__contact">
+               learn more</a></span>
 
-                     <div class="heading">
-                        <h2>WE CARE ABOUT YOUR DATA</h2>
-                        <span class="discl">
-                           <h4>If you want to give us the opportunity to offer you a better report, fill the form with your data.
-                           </h4>
-                           </span>
-                     </div>
-                  </div>
+            <nav class="top-bar__nav collapsed" id="top-bar__nav">
+                <ul class="top-bar__nav-list ">
+                    <li><a href="learn-more.html">Learn More</a></li>
+                    <li><a href="the-experiment.html">The Experiment</a></li>
+                    <li><a href="who-behind.html">Who's Behind</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-6 brand">
 
-                  <div class="col-sm-6 form">
-                        <form class="signup-form" action="/" id="form" method="POST">
-         
-                           <div class="form-group">
-                              <label for="name">age</label>
-                              <input type="text" name="age" id="age" class="age">
-                              <span class="error"></span>
-                           </div>
-         
-                           <div class="form-group">
-                              <label for="gender">gender</label>
-                              <input type="text" name="gender" id="gender" class="gender">
-                              <span class="error"></span>
-                           </div>
-         
-                           <div class="form-group">
-                              <label for="sex">sexual orientation</label>
-                              <input type="text" name="sex" id="sex">
-                           </div>
-         
-                           <div class="CTA">
-                             
-                              <a href="experiment.html" onclick="userData();">
-                                 <input type="button" value="begin the experiment" id="submit">
-                              </a>
-                              <a href="index.html" class="switch">Go Back to Home</a>
-                           </div>
-                        </form>
-                     
-                  </div>
-               </div> 
+            <div class="heading">
+                <h2>WE CARE ABOUT YOUR DATA</h2>
+                <span class="discl">
+               <h4>If you want to give us the opportunity to offer you a better report, fill the form with your data.
+               </h4>
+            </span>
+            </div>
+        </div>
+
+        <div class="col-sm-6 form">
+            <form class="signup-form" action="/" id="form" method="POST">
+
+                <div class="form-group">
+                    <label for="name">age</label>
+                    <input type="text" name="age" id="age" class="age">
+                    <span class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">gender</label>
+                    <input type="text" name="gender" id="gender" class="gender">
+                    <span class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">sexual orientation</label>
+                    <input type="text" name="sex" id="sex">
+                </div>
+
+                <div class="CTA">
+
+                    <a href="experiment.html" onclick="userData();">
+                        <input type="button" value="begin the experiment" id="submit">
+                    </a>
+                    <a href="index.html" class="switch">Go Back to Home</a>
+
+                    <a href="http://127.0.0.1:5500/ishtar/begin.html" onclick="clearCookies();">
+                        <input type="button" value="clear" id="clear" />
+                    </a>
+                </div>
+            </form>
+
+        </div>
 
     </div>
 
+    </div>
+    <script>
+        var expired = new Date(today.getTime() - 24 * 3600 * 1000); // less 24 hours
+
+        function deleteCookie(name) {
+            document.cookie = name + "=null; path=/; expires=" + expired.toGMTString();
+        }
+
+        function clearCookies() {
+            deleteCookie("sex");
+            deleteCookie("age");
+            deleteCookie("gender");
+            deleteCookie("ishtarinitate");
+            alert('Your cookies have been deleted!');
+        }
+    </script>
     <script src="js/menu.js"></script>
 
     <script>
-        function openModal(){
-    const open = document.getElementById("card");
-    open.style.display="flex";
-    open.style.width="300px";
-  };
-  
-  //close the box modal
-  function closeModal(){
-    const close = document.getElementById("card");
-    close.style.display="none";
-  };
+        function openModal() {
+            const open = document.getElementById("card");
+            open.style.display = "flex";
+            open.style.width = "300px";
+        };
+
+        //close the box modal
+        function closeModal() {
+            const close = document.getElementById("card");
+            close.style.display = "none";
+        };
     </script>
-    
+
 </body>
+
 </html>

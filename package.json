@@ -33,7 +33,8 @@
   "bundleDependencies": false,
   "dependencies": {
     "client": "0.0.1",
-    "cloudinary-core": "^2.10.2",
+    "cloudinary-core": "^2.12.3",
+    "cloudinary-video-player": "^1.8.0",
     "cookie-parser": "^1.4.6",
     "core-js": "3.6.5",
     "ejs": "^3.1.6",
@@ -41,7 +42,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "loader.js": "^4.7.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mssql": "^7.2.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
@@ -50,7 +51,8 @@
     "q": "^1.5.1",
     "shaka-player": "^3.1.6",
     "tedious": "^12.0.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "webpack": "^5.69.1"
   },
   "deprecated": false,
   "description": "Cloudinary NPM for node.js integration",
