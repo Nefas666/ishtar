@@ -291,7 +291,7 @@ p {
 }
 
 .wegazer-init-container {
-    position: relative;
+    position: relative!important;
     width: 50%!important;
     height: 40%!important;
     // height: fit-content;
@@ -306,11 +306,12 @@ p {
     backdrop-filter: blur(20px);
     z-index: 100;
     transition: width 1s, height 350ms;
-    .h {
+    p {
         font-family: $b-type;
         font-size: 1.07em;
         color: $li-ish;
         justify-content: center;
+        padding: 0.5em 0.9em 0.5em 0;
     }
     .button {
         display: flex;
@@ -345,5 +346,5 @@ div.validation-point {
 }
 
 .vidSection {
-    margin-top: 80px;
+    margin-top: 100px;
 }

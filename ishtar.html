@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <!-- Shaka Player compiled library:
     <script src="node_modules/shaka-player/dist/shaka-player.compiled.js"></script>-->
     <!-- Your application source: 
@@ -27,7 +33,7 @@
     <link rel="stylesheet" href="css/experiment.css.map">
     <link rel="stylesheet" href="css/experiment.css">
 
-    <title>videoPlayer</title>
+    <title>Ishtar</title>
 </head>
 
 <body>
@@ -52,11 +58,11 @@
             </nav>
         </div>
     </div>
-    <div id="webgazerVideoContainer" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;">
+    <div id="webgazerVideoContainer" style="display: block; position: fixed; top: 0px; left: 0px; width: 220px; height: 140px;">
 
-        <video playsinline="" id="webgazerVideoFeed" autoplay="" style="display: block; position: absolute; width: 320px; height: 240px; transform: scale(-1, 1);"></video>
+        <video playsinline="" id="webgazerVideoFeed" autoplay="" style="display: block; position: absolute; width: 220px; height: 140px; transform: scale(-1, 1);"></video>
         <canvas id="webgazerVideoCanvas" width="640" height="480" style="display: none;"></canvas>
-        <canvas id="webgazerFaceOverlay" width="640" height="480" style="display: block; position: absolute; transform: scale(-1, 1); width: 320px; height: 240px;"></canvas>
+        <canvas id="webgazerFaceOverlay" width="640" height="480" style="display: block; position: absolute; transform: scale(-1, 1); width: 220px; height: 140px;"></canvas>
         <canvas id="webgazerFaceFeedbackBox" style="display: block; border: solid white; position: absolute; top: 40.8px; left: 80.8px; width: 158.4px; height: 158.4px;"></canvas>
     </div>
     <!--<section class="vidbox">
@@ -73,9 +79,9 @@
     <div class="wrapper" id="wrapper" style="display:flex; flex-direction:column; max-width:1440px; position:relative;margin:0 auto;">
         <div class='vidSection' style='display: flex;flex-direction: row; align-items: center; justify-content: space-around;'>
 
-            <video id="example-player" style="display: flex;flex-direction:column; align-items: center;" width="700" height="480" controls muted autoplay class="cld-video-player" data-cld-colors='{ "base": "#810303bb", "accent": "#E90003", "text": "#FCFAFC" }' data-cld-transformation='{ "width": 700, "height": 480 }'></video>
+            <video id="example-player" style="display: flex;flex-direction:column; align-items: center;" width="500" height="380" controls muted autoplay class="cld-video-player" data-cld-colors='{ "base": "#810303bb", "accent": "#E90003", "text": "#FCFAFC" }' data-cld-transformation='{ "width": 500, "height": 380 }'></video>
 
-            <video id="example-player-2" style="display: flex;flex-direction:column;align-items: center;" width="700" height="480" controls muted autoplay class="cld-video-player" data-cld-colors='{ "base": "#810303bb", "accent": "#E90003", "text": "#FCFAFC" }' data-cld-transformation='{ "width": 700, "height": 480 }'></video>
+            <video id="example-player-2" style="display: flex;flex-direction:column;align-items: center;" width="500" height="380" controls muted autoplay class="cld-video-player" data-cld-colors='{ "base": "#810303bb", "accent": "#E90003", "text": "#FCFAFC" }' data-cld-transformation='{ "width": 500, "height": 380 }'></video>
         </div>
         <button id="play-prev" class="btn btn-default btn-ish">Prev</button>
         <button id="play-next" class="btn btn-default btn-ish">Next</button> >

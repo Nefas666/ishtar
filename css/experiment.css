@@ -503,7 +503,7 @@ p {
 }
 
 .wegazer-init-container {
-  position: relative;
+  position: relative !important;
   width: 50% !important;
   height: 40% !important;
   background: rgba(255, 255, 255, 0.2);
@@ -518,11 +518,12 @@ p {
   z-index: 100;
   transition: width 1s, height 350ms;
 }
-.wegazer-init-container .h {
+.wegazer-init-container p {
   font-family: "Geomanist Ultra", "Arial", Helvetica, Geneva, sans-serif;
   font-size: 1.07em;
   color: #FCFAFC;
   justify-content: center;
+  padding: 0.5em 0.9em 0.5em 0;
 }
 .wegazer-init-container .button {
   display: flex;
@@ -579,7 +580,7 @@ div.validation-point {
 }
 
 .vidSection {
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 /*# sourceMappingURL=experiment.css.map */
